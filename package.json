@@ -1,0 +1,25 @@
+{
+  "name": "mobilemart",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MobileMart — Production-Grade Full-Stack Marketplace for Mobile Phones",
+  "workspaces": [
+    "app/backend",
+    "app/frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n backend,frontend -c green,cyan \"npm run dev --workspace=mobilemart-backend\" \"npm run dev --workspace=mobilemart-frontend\"",
+    "dev:backend": "npm run dev --workspace=mobilemart-backend",
+    "dev:frontend": "npm run dev --workspace=mobilemart-frontend",
+    "start": "npm run start --workspace=mobilemart-backend",
+    "build": "npm run build --workspace=mobilemart-frontend",
+    "seed": "npm run seed --workspace=mobilemart-backend",
+    "test": "npm run test --workspace=mobilemart-backend && npm run test --workspace=mobilemart-frontend",
+    "test:backend": "npm run test --workspace=mobilemart-backend",
+    "test:frontend": "npm run test --workspace=mobilemart-frontend",
+    "install:all": "npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

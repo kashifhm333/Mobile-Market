@@ -1,0 +1,49 @@
+graph LR
+    Guest((Guest))
+    User((Registered User))
+    Admin((Administrator))
+
+    subgraph MobileMart Use Cases
+        UC1[Browse Active Listings]
+        UC2[Search & Filter by Brand/Price/Condition]
+        UC3[View Phone Details & Specs]
+        UC4[Register & Login]
+        
+        UC5[Create & Publish Phone Listing]
+        UC6[Upload Listing Photos]
+        UC7[Manage My Listings]
+        UC8[Toggle Favorites]
+        UC9[Initiate Inquiry & Make Price Offer]
+        UC10[Exchange In-App Chat Messages]
+        UC11[Mark Listing as Reserved]
+        UC12[Confirm Listing as Sold]
+        UC13[Report Listing or Fraudulent User]
+        
+        UC14[Review Submitted Reports]
+        UC15[Moderate Listings - Approve / Reject / Archive]
+        UC16[Suspend or Activate User Accounts]
+        UC17[Inspect Immutable Audit Logs]
+    end
+
+    Guest --> UC1
+    Guest --> UC2
+    Guest --> UC3
+    Guest --> UC4
+
+    User --> UC1
+    User --> UC2
+    User --> UC3
+    User --> UC5
+    User --> UC6
+    User --> UC7
+    User --> UC8
+    User --> UC9
+    User --> UC10
+    User --> UC11
+    User --> UC12
+    User --> UC13
+
+    Admin --> UC14
+    Admin --> UC15
+    Admin --> UC16
+    Admin --> UC17

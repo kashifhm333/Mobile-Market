@@ -1,0 +1,28 @@
+sequenceDiagram
+    autonumber
+    actor Seller as Seller (Registered User)
+    participant API as ListingRoutes & AuthMiddleware
+    participant Ctrl as ListingController
+    participant Svc as ListingService
+    participant DB as ListingModel (MongoDB)
+
+    Seller->>API: POST /api/v1/listings { title, brand, model, price, condition, city, ... }
+    API->>API: Verify JWT cookie / header
+    API->>API: Validate input schema (price > 0, required fields)
+    API->>Ctrl: createListing(req, res)
+    Ctrl->>Svc: createListing(sellerId, listingData)
+    Svc->>DB: create({ ...listingData, sellerId, status: 'ACTIVE' })
+    DB-->>Svc: newListing document
+    Svc-->>Ctrl: newListing
+    Ctrl-->>Seller: 201 Created { success: true, data: newListing }
+
+    Seller->>API: POST /api/v1/listings/:id/images (multipart/form-data)
+    API->>API: Multer MIME & File Size Check (<= 8MB, jpg/png/webp)
+    API->>Ctrl: uploadImages(req, res)
+    Ctrl->>Svc: addListingImages(listingId, sellerId, fileUrls)
+    Svc->>DB: findOne({ _id: listingId, sellerId })
+    DB-->>Svc: listing
+    Svc->>DB: updateOne({ _id: listingId }, { $push: { images: { $each: fileUrls } } })
+    DB-->>Svc: updated
+    Svc-->>Ctrl: updatedListing
+    Ctrl-->>Seller: 200 OK { success: true, data: updatedListing }

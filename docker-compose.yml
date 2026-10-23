@@ -1,0 +1,54 @@
+services:
+  mongo:
+    image: mongo:7.0
+    container_name: mobilemart_mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - mobilemart_network
+
+  backend:
+    build:
+      context: .
+      dockerfile: app/backend/Dockerfile
+    container_name: mobilemart_backend
+    restart: always
+    environment:
+      - PORT=5000
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongo:27017/mobilemart
+      - JWT_SECRET=production_secret_key_mobilemart_super_secure_32_chars
+      - JWT_EXPIRES_IN=7d
+      - CLIENT_URL=http://localhost:3000
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    volumes:
+      - upload_data:/app/uploads
+    networks:
+      - mobilemart_network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: app/frontend/Dockerfile
+    container_name: mobilemart_frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - mobilemart_network
+
+volumes:
+  mongo_data:
+  upload_data:
+
+networks:
+  mobilemart_network:
+    driver: bridge

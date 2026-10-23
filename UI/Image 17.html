@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-container": "#eeefff", "on-primary": "#ffffff", "on-primary-fixed-variant": "#003ea8", "surface-container-highest": "#dae2fd", "surface": "#faf8ff", "tertiary-fixed": "#ffddb8", "on-secondary": "#ffffff", "on-primary-fixed": "#00174b", "on-secondary-fixed": "#002113", "on-tertiary-fixed-variant": "#653e00", "primary-container": "#2563eb", "secondary-fixed": "#6ffbbe", "on-background": "#131b2e", "on-error": "#ffffff", "on-tertiary-container": "#ffeedd", "on-error-container": "#93000a", "surface-container": "#eaedff", "background": "#faf8ff", "surface-container-low": "#f2f3ff", "surface-variant": "#dae2fd", "outline-variant": "#c3c6d7", "inverse-primary": "#b4c5ff", "tertiary-fixed-dim": "#ffb95f", "primary-fixed-dim": "#b4c5ff", "on-tertiary-fixed": "#2a1700", "tertiary-container": "#996100", "tertiary": "#784b00", "error": "#ba1a1a", "surface-dim": "#d2d9f4", "on-surface": "#131b2e", "inverse-on-surface": "#eef0ff", "secondary": "#006c49", "outline": "#737686", "surface-bright": "#faf8ff", "on-secondary-fixed-variant": "#005236", "on-surface-variant": "#434655", "inverse-surface": "#283044", "surface-container-high": "#e2e7ff", "primary-fixed": "#dbe1ff", "primary": "#004ac6", "secondary-fixed-dim": "#4edea3", "secondary-container": "#6cf8bb", "error-container": "#ffdad6", "on-tertiary": "#ffffff", "surface-tint": "#0053db", "surface-container-lowest": "#ffffff", "on-secondary-container": "#00714d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-lg": "3rem", "gutter-md": "1.5rem", "gutter": "1rem", "gutter-lg": "2rem", "space-xl": "2.5rem", "space-lg": "1.5rem", "margin-md": "2rem", "space-sm": "0.5rem", "space-md": "1rem", "space-xs": "0.25rem", "margin": "1rem" }, "fontFamily": { "headline-xl": [ "Plus Jakarta Sans" ], "headline-md": [ "Plus Jakarta Sans" ], "label-md": [ "Inter" ], "label-badge": [ "Inter" ], "price-display": [ "Plus Jakarta Sans" ], "body-sm": [ "Plus Jakarta Sans" ], "label-lg": [ "Inter" ], "headline-xl-mobile": [ "Plus Jakarta Sans" ], "body-md": [ "Plus Jakarta Sans" ], "title-md": [ "Plus Jakarta Sans" ], "body-lg": [ "Plus Jakarta Sans" ], "headline-lg": [ "Plus Jakarta Sans" ], "headline-sm": [ "Plus Jakarta Sans" ], "headline-lg-mobile": [ "Plus Jakarta Sans" ] }, "fontSize": { "headline-xl": [ "48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "800" } ], "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" } ], "label-badge": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" } ], "price-display": [ "32px", { "lineHeight": "36px", "letterSpacing": "-0.03em", "fontWeight": "800" } ], "body-sm": [ "13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-lg": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-xl-mobile": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800" } ], "body-md": [ "14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" } ], "title-md": [ "18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" } ], "headline-lg": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "headline-lg-mobile": [ "26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-[1360px] mx-auto px-margin md:px-margin-md lg:px-margin-lg flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm" data-path="home" href="#"><img alt="NexPhone Exchange Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHCGJ3B7Jc0u8spw3cKg_RfqeaBpG9VaHV5aXZ8wG53EOWHlzZb81R3XXCqnPjvyzkWT4LR-MCYw9IgsuZz4AoKiVdefD9Qk4w9vfOgJNyJ6jvJlC6EsxZEg696Ma7rCo9KNR3VcsTAGbJIEO53poXZ_-MeRtOAA1i7rCO1_apy463KRMYNdT5_gJ3324gf2woe09vuuHHqY6gDgpz-_GWRmoftRpnbWk-z0qKk3HQVURiPf_CK7ql"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight hidden sm:inline">NexPhone</span></a><nav class="hidden xl:flex items-center gap-space-md" data-active-classes="text-primary font-bold"><a aria-current="page" class="transition-colors text-primary font-bold" data-path="home" href="#">Home</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="new-phones" href="#">New Phones</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="pre-owned-&amp;-refurbished" href="#">Pre-Owned &amp; Refurbished</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="trade-in-calculator" href="#">Trade-In Calculator</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="deals" href="#">Deals</a></nav></div><div class="flex-1 max-w-md mx-space-md hidden md:block"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-3 text-outline">search</span><input class="w-full bg-surface-container-low text-on-surface placeholder:text-outline pl-10 pr-4 py-2 rounded-lg font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary-container transition-all" placeholder="Search iPhone, Galaxy, Pixel, storage, or condition..." type="search"/></div></div><div class="flex items-center gap-space-md"><button class="hidden sm:flex items-center gap-space-xs px-2.5 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-lg">public</span><span class="font-label-md text-label-md uppercase tracking-wider">USD $</span><span class="material-symbols-outlined text-sm">expand_more</span></button><a class="relative p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="wishlist" href="#"><span class="material-symbols-outlined">favorite</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-tertiary-container"></span></a><a class="relative p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="cart" href="#"><span class="material-symbols-outlined">shopping_bag</span><span class="absolute top-0.5 right-0.5 min-w-[18px] h-[18px] px-1 rounded-full bg-primary-container text-on-primary-container font-label-badge text-label-badge flex items-center justify-center">3</span></a><div class="flex items-center gap-space-xs pl-space-xs"><a class="rounded-full focus:outline-none focus:ring-2 focus:ring-primary-container" data-path="user-profile" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCipYGpk27dnr1BM10qPzK2BEeQoFCCvY4z-xY6GZUiARK-6q_Qf_FDPnBbBrCvhh7yEXiVTqsLdnj-DenSB072Wbi8DYn292_4BcJuaNgq7AzitXD09IMdmKQo1GyPVFcegAuoKMw2q6HcDpriPtXuW75XuKbzaQNVotF4IDKjW7QAxthOtho4JToG1P7nKV7II3-_KS51pYophq23gPCdyC5lfc8Lt21do38fgvSWyjLgYpsCxsR8"/></a></div></div></div></header><main class="w-full pt-20 bg-background"><div class="flex flex-col w-full">
+<!-- Interactive Trade-In Calculator Core Container -->
+<div class="max-w-[1360px] mx-auto w-full px-margin md:px-margin-md lg:px-margin-lg py-space-xl">
+<!-- Top Flow Header & Value Proposition -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-space-lg md:p-space-xl shadow-sm mb-space-xl">
+<div class="absolute -right-20 -top-24 w-96 h-96 rounded-full bg-primary-container/5 blur-3xl pointer-events-none"></div>
+<div class="absolute right-1/4 -bottom-20 w-80 h-80 rounded-full bg-secondary/5 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg">
+<div class="max-w-2xl">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-badge text-label-badge uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+              Algorithmic Rate Engine v4.2
+            </span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-secondary">verified</span>
+              14-Day Price Lock Guarantee
+            </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mb-space-sm">
+            Instant Device Trade-In &amp; Valuation
+          </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Receive a transparent, guaranteed quote for your pre-owned smartphone in under 90 seconds. We cover insured priority logistics and guarantee military-grade cryptographic data sanitization.
+          </p>
+</div>
+<!-- Metric highlights -->
+<div class="flex items-center gap-gutter bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">Avg. Turnaround</span>
+<span class="font-title-md text-title-md text-on-surface font-bold">24 Hours</span>
+</div>
+<div class="w-px h-8 bg-surface-container-high"></div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">Credit Bonus</span>
+<span class="font-title-md text-title-md text-secondary font-bold">+15% Extra</span>
+</div>
+<div class="w-px h-8 bg-surface-container-high"></div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">Prepaid Kit</span>
+<span class="font-title-md text-title-md text-primary font-bold">100% Free</span>
+</div>
+</div>
+</div>
+<!-- Linear Step Progress Visualizer -->
+<div class="mt-space-xl pt-space-md">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter relative">
+<!-- Step 1 -->
+<div class="flex flex-col gap-space-xs relative">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center font-label-md text-label-md font-bold shadow-sm">
+                1
+              </div>
+<span class="font-label-lg text-label-lg text-primary font-bold">Select Hardware</span>
+</div>
+<div class="h-1.5 w-full bg-primary-container rounded-full mt-2"></div>
+<span class="font-body-sm text-body-sm text-on-surface-variant hidden md:block">Make, model, storage &amp; lock</span>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col gap-space-xs relative">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest text-on-surface flex items-center justify-center font-label-md text-label-md font-bold" id="step2-indicator">
+                2
+              </div>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Diagnostic State</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full mt-2" id="step2-bar"></div>
+<span class="font-body-sm text-body-sm text-on-surface-variant hidden md:block">Cosmetic &amp; functional audit</span>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col gap-space-xs relative">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-label-md text-label-md font-semibold">
+                3
+              </div>
+<span class="font-label-lg text-label-lg text-on-surface-variant">Valuation Lock</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full mt-2"></div>
+<span class="font-body-sm text-body-sm text-on-surface-variant hidden md:block">Live appraisal calculated</span>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col gap-space-xs relative">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-label-md text-label-md font-semibold">
+                4
+              </div>
+<span class="font-label-lg text-label-lg text-on-surface-variant">Payout Mode</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full mt-2"></div>
+<span class="font-body-sm text-body-sm text-on-surface-variant hidden md:block">Direct deposit or +15% credit</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Dynamic Calculator Workspace -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-start">
+<!-- Left Column: Form Questionnaire Panels (Cols 1-8) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Section 1: Manufacturer Selection -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-6 h-6 rounded-md bg-surface-container text-primary flex items-center justify-center font-label-badge text-label-badge font-bold">A</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Select Manufacturer Brand</h2>
+</div>
+<span class="font-label-md text-label-md text-secondary flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-base">check_circle</span>
+              All carriers supported
+            </span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-gutter">
+<!-- Brand 1: Apple -->
+<button class="brand-btn group flex flex-col items-center justify-center p-space-md rounded-xl bg-surface-container text-primary shadow-sm hover:shadow-md transition-all text-center" id="brand-apple" onclick="selectBrand('apple')" type="button">
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center mb-space-sm shadow-sm">
+<span class="material-symbols-outlined text-2xl text-on-surface">phone_iphone</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface group-hover:text-primary transition-colors font-bold">Apple</span>
+<span class="font-label-md text-label-md text-on-surface-variant mt-0.5">iPhone 11 to 16 Pro</span>
+</button>
+<!-- Brand 2: Samsung -->
+<button class="brand-btn group flex flex-col items-center justify-center p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface transition-all text-center" id="brand-samsung" onclick="selectBrand('samsung')" type="button">
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center mb-space-sm shadow-sm">
+<span class="material-symbols-outlined text-2xl text-on-surface-variant group-hover:text-primary transition-colors">android</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface font-semibold">Samsung</span>
+<span class="font-label-md text-label-md text-on-surface-variant mt-0.5">Galaxy S &amp; Z Series</span>
+</button>
+<!-- Brand 3: Google -->
+<button class="brand-btn group flex flex-col items-center justify-center p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface transition-all text-center" id="brand-google" onclick="selectBrand('google')" type="button">
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center mb-space-sm shadow-sm">
+<span class="material-symbols-outlined text-2xl text-on-surface-variant group-hover:text-primary transition-colors">circle</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface font-semibold">Google</span>
+<span class="font-label-md text-label-md text-on-surface-variant mt-0.5">Pixel 7 through 9 Pro</span>
+</button>
+<!-- Brand 4: Other / OnePlus -->
+<button class="brand-btn group flex flex-col items-center justify-center p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface transition-all text-center" id="brand-other" onclick="selectBrand('other')" type="button">
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center mb-space-sm shadow-sm">
+<span class="material-symbols-outlined text-2xl text-on-surface-variant group-hover:text-primary transition-colors">devices_other</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface font-semibold">Other Brands</span>
+<span class="font-label-md text-label-md text-on-surface-variant mt-0.5">OnePlus, Motorola</span>
+</button>
+</div>
+</section>
+<!-- Section 2: Model & Hardware Specs Selection -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-6 h-6 rounded-md bg-surface-container text-primary flex items-center justify-center font-label-badge text-label-badge font-bold">B</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Specific Model &amp; Internal Storage</h2>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Step 1 of 2 Complete</span>
+</div>
+<!-- Model Chips -->
+<div class="mb-space-md">
+<label class="block font-label-lg text-label-lg text-on-surface mb-space-sm">Smartphone Model</label>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-gutter" id="model-grid">
+<button class="model-btn text-left p-space-md rounded-xl bg-surface-container text-primary shadow-sm transition-all flex items-center justify-between" onclick="selectModel('iPhone 15 Pro Max', 580)" type="button">
+<div>
+<div class="font-title-md text-title-md text-on-surface font-bold">iPhone 15 Pro Max</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Titanium frame, A17 Pro</div>
+</div>
+<span class="material-symbols-outlined text-primary text-xl">radio_button_checked</span>
+</button>
+<button class="model-btn text-left p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface transition-all flex items-center justify-between" onclick="selectModel('iPhone 15 Pro', 500)" type="button">
+<div>
+<div class="font-title-md text-title-md text-on-surface font-semibold">iPhone 15 Pro</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Titanium 6.1" display</div>
+</div>
+<span class="material-symbols-outlined text-outline text-xl">radio_button_unchecked</span>
+</button>
+<button class="model-btn text-left p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface transition-all flex items-center justify-between" onclick="selectModel('iPhone 15 Plus', 420)" type="button">
+<div>
+<div class="font-title-md text-title-md text-on-surface font-semibold">iPhone 15 Plus</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">6.7" Super Retina XDR</div>
+</div>
+<span class="material-symbols-outlined text-outline text-xl">radio_button_unchecked</span>
+</button>
+<button class="model-btn text-left p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface transition-all flex items-center justify-between" onclick="selectModel('iPhone 14 Pro Max', 460)" type="button">
+<div>
+<div class="font-title-md text-title-md text-on-surface font-semibold">iPhone 14 Pro Max</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Stainless steel frame</div>
+</div>
+<span class="material-symbols-outlined text-outline text-xl">radio_button_unchecked</span>
+</button>
+<button class="model-btn text-left p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface transition-all flex items-center justify-between" onclick="selectModel('iPhone 14 Pro', 390)" type="button">
+<div>
+<div class="font-title-md text-title-md text-on-surface font-semibold">iPhone 14 Pro</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Dynamic Island flagship</div>
+</div>
+<span class="material-symbols-outlined text-outline text-xl">radio_button_unchecked</span>
+</button>
+<button class="model-btn text-left p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface transition-all flex items-center justify-between" onclick="selectModel('iPhone 13 Pro', 310)" type="button">
+<div>
+<div class="font-title-md text-title-md text-on-surface font-semibold">iPhone 13 Pro</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">ProMotion 120Hz</div>
+</div>
+<span class="material-symbols-outlined text-outline text-xl">radio_button_unchecked</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter pt-space-xs">
+<!-- Storage Capacity Selector -->
+<div>
+<label class="block font-label-lg text-label-lg text-on-surface mb-space-sm">Internal Storage</label>
+<div class="grid grid-cols-4 gap-space-xs" id="storage-group">
+<button class="storage-btn py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md font-semibold transition-all" onclick="selectStorage('128GB', 0)" type="button">
+                  128 GB
+                </button>
+<button class="storage-btn py-2.5 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md font-bold shadow-sm transition-all" onclick="selectStorage('256GB', 40)" type="button">
+                  256 GB
+                </button>
+<button class="storage-btn py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md font-semibold transition-all" onclick="selectStorage('512GB', 90)" type="button">
+                  512 GB
+                </button>
+<button class="storage-btn py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md font-semibold transition-all" onclick="selectStorage('1TB', 150)" type="button">
+                  1 TB
+                </button>
+</div>
+</div>
+<!-- Carrier Network Status -->
+<div>
+<label class="block font-label-lg text-label-lg text-on-surface mb-space-sm">Carrier Status</label>
+<div class="grid grid-cols-3 gap-space-xs" id="carrier-group">
+<button class="carrier-btn py-2.5 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md font-bold shadow-sm transition-all flex items-center justify-center gap-1" onclick="selectCarrier('Unlocked', 20)" type="button">
+<span class="material-symbols-outlined text-sm">lock_open</span>
+                  Unlocked
+                </button>
+<button class="carrier-btn py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md font-semibold transition-all" onclick="selectCarrier('Verizon / AT&amp;T', 0)" type="button">
+                  Major Carrier
+                </button>
+<button class="carrier-btn py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md font-semibold transition-all" onclick="selectCarrier('T-Mobile / Other', 0)" type="button">
+                  Other / Financed
+                </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Diagnostic Condition Questionnaire -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-6 h-6 rounded-md bg-surface-container text-primary flex items-center justify-center font-label-badge text-label-badge font-bold">C</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Cosmetic &amp; Functional Condition</h2>
+</div>
+<a class="font-label-md text-label-md text-primary hover:underline flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm">info</span>
+              Grading definitions
+            </a>
+</div>
+<!-- Screen Condition -->
+<div class="mb-space-lg">
+<div class="flex items-center justify-between mb-space-sm">
+<label class="font-label-lg text-label-lg text-on-surface font-bold">1. Front Display Screen Glass</label>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Check screen while light reflects</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter" id="screen-condition-group">
+<!-- Pristine -->
+<button class="screen-btn text-left p-space-md rounded-xl bg-surface-container text-primary shadow-sm transition-all relative" onclick="selectScreenCondition('flawless', 0)" type="button">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-title-md text-title-md text-on-surface font-bold">Flawless</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-badge text-label-badge">Max Value</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Zero scratches, no chips, zero burn-in. Looks fresh out of original packaging.</p>
+<div class="mt-space-sm font-label-md text-label-md text-primary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-base">check</span> Selected
+                </div>
+</button>
+<!-- Light wear -->
+<button class="screen-btn text-left p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface transition-all relative" onclick="selectScreenCondition('light', -45)" type="button">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-title-md text-title-md text-on-surface font-semibold">Micro-Scratches</span>
+<span class="text-on-surface-variant font-label-badge text-label-badge">-$45</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Faint hairline marks invisible when screen is powered on. No cracks or deep gouges.</p>
+<div class="mt-space-sm font-label-md text-label-md text-on-surface-variant flex items-center gap-1 opacity-0">
+<span class="material-symbols-outlined text-base">check</span> Select
+                </div>
+</button>
+<!-- Cracked / Deep Scratches -->
+<button class="screen-btn text-left p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface transition-all relative" onclick="selectScreenCondition('cracked', -160)" type="button">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-title-md text-title-md text-on-surface font-semibold">Cracked / Fractured</span>
+<span class="text-error font-label-badge text-label-badge">-$160</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Visible surface crack, chipped corners, pixel bleeding, or dead display rows.</p>
+<div class="mt-space-sm font-label-md text-label-md text-on-surface-variant flex items-center gap-1 opacity-0">
+<span class="material-symbols-outlined text-base">check</span> Select
+                </div>
+</button>
+</div>
+</div>
+<!-- Frame & Back Housing -->
+<div class="mb-space-lg">
+<div class="flex items-center justify-between mb-space-sm">
+<label class="font-label-lg text-label-lg text-on-surface font-bold">2. Sides Frame &amp; Rear Chassis</label>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Inspect camera ring &amp; edges</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter" id="body-condition-group">
+<button class="body-btn text-left p-space-md rounded-xl bg-surface-container text-primary shadow-sm transition-all" onclick="selectBodyCondition('flawless', 0)" type="button">
+<div class="font-title-md text-title-md text-on-surface font-bold mb-1">Like New Chassis</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Zero dings, no paint flaking, pristine camera glass lenses.</p>
+</button>
+<button class="body-btn text-left p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface transition-all" onclick="selectBodyCondition('moderate', -30)" type="button">
+<div class="font-title-md text-title-md text-on-surface font-semibold mb-1">Light Edge Scuffs (-$30)</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Minor pocket wear on ports or bevel. Rear glass intact.</p>
+</button>
+<button class="body-btn text-left p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface transition-all" onclick="selectBodyCondition('heavy', -95)" type="button">
+<div class="font-title-md text-title-md text-on-surface font-semibold mb-1">Dents or Cracked Back (-$95)</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Severe impact corners, cracked rear panel, or bent frame.</p>
+</button>
+</div>
+</div>
+<!-- Functional Diagnostics Checklist -->
+<div class="pt-space-sm">
+<label class="font-label-lg text-label-lg text-on-surface font-bold mb-space-sm block">3. Diagnostic Functionality Checklist</label>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<label class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-low cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm">
+<input checked="" class="w-5 h-5 rounded text-primary focus:ring-primary accent-primary" onchange="toggleFunctional('touch', this.checked, 75)" type="checkbox"/>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">Touchscreen &amp; Biometrics</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Face ID / Touch ID works fully</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary">verified</span>
+</label>
+<label class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-low cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm">
+<input checked="" class="w-5 h-5 rounded text-primary focus:ring-primary accent-primary" onchange="toggleFunctional('camera', this.checked, 60)" type="checkbox"/>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">All Cameras &amp; Flash</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Autofocus, ultra-wide, telephoto intact</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary">verified</span>
+</label>
+<label class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-low cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm">
+<input checked="" class="w-5 h-5 rounded text-primary focus:ring-primary accent-primary" onchange="toggleFunctional('battery', this.checked, 40)" type="checkbox"/>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">Battery Health 82%+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">No "Service Required" warning</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary">battery_charging_full</span>
+</label>
+<label class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-low cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm">
+<input checked="" class="w-5 h-5 rounded text-primary focus:ring-primary accent-primary" onchange="toggleFunctional('water', this.checked, 120)" type="checkbox"/>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">No Liquid / Water Damage</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">LDI liquid contact indicators white</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary">water_drop</span>
+</label>
+</div>
+</div>
+</section>
+<!-- Trust Badges & Algorithmic Security Strip -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter bg-surface-container-low p-space-lg rounded-xl">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-2xl mt-0.5">lock_reset</span>
+<div>
+<div class="font-title-md text-title-md text-on-surface font-bold">DoD 5220.22-M Wipe</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Zero residual credentials or private data preserved upon lab receipt.</div>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-2xl mt-0.5">lock_clock</span>
+<div>
+<div class="font-title-md text-title-md text-on-surface font-bold">14-Day Price Lock</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Market depreciation protection locked immediately once submitted.</div>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-2xl mt-0.5">local_shipping</span>
+<div>
+<div class="font-title-md text-title-md text-on-surface font-bold">Zero Shipping Cost</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Free insured FedEx prepaid mailer kit dispatched to your door.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Sticky Real-Time Valuation Summary Box (Cols 9-12) -->
+<div class="lg:col-span-4 sticky top-24 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-lg relative overflow-hidden">
+<!-- Top subtle accent bar -->
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary to-secondary"></div>
+<div class="flex items-center justify-between mb-space-sm pt-space-xs">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant font-bold">Live Valuation Result</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-badge text-label-badge font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Live Quote
+            </span>
+</div>
+<!-- Selected Hardware Tagline -->
+<div class="mb-space-md pb-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-on-surface" id="summary-device-title">iPhone 15 Pro Max</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant" id="summary-device-specs">256GB • Unlocked • Pristine Condition</p>
+</div>
+<!-- Live Price Display Block -->
+<div class="bg-surface-container-low p-space-md rounded-xl mb-space-md">
+<!-- Mode 1: Instant Cash Transfer -->
+<div class="flex items-center justify-between mb-space-xs cursor-pointer p-space-xs rounded-lg transition-colors" id="payout-cash-card" onclick="setPayoutMode('cash')">
+<div class="flex items-center gap-space-sm">
+<div class="w-4 h-4 rounded-full border-2 border-primary flex items-center justify-center p-0.5" id="radio-cash">
+<div class="w-2 h-2 rounded-full bg-primary" id="radio-cash-dot"></div>
+</div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-bold">Direct Cash Payout</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">PayPal, Venmo, or Direct ACH</div>
+</div>
+</div>
+<div class="text-right">
+<span class="font-price-display text-price-display text-on-surface font-extrabold" id="cash-value-display">$640.00</span>
+</div>
+</div>
+<!-- Mode 2: NexPhone Store Credit (+15% Bonus) -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-lowest shadow-sm mt-space-xs border-primary/40 cursor-pointer" id="payout-credit-card" onclick="setPayoutMode('credit')">
+<div class="flex items-center gap-space-sm">
+<div class="w-4 h-4 rounded-full border-2 border-outline-variant flex items-center justify-center p-0.5" id="radio-credit">
+<div class="w-2 h-2 rounded-full bg-transparent" id="radio-credit-dot"></div>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">NexPhone Credit</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary-container font-label-badge text-label-badge font-bold">+15%</span>
+</div>
+<div class="font-body-sm text-body-sm text-secondary font-medium">Valid toward new &amp; certified phones</div>
+</div>
+</div>
+<div class="text-right">
+<span class="font-price-display text-price-display text-secondary font-extrabold" id="credit-value-display">$736.00</span>
+</div>
+</div>
+</div>
+<!-- Price Delta Itemized Breakdown -->
+<div class="space-y-space-xs mb-space-lg text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex justify-between py-1">
+<span>Base Device Benchmark</span>
+<span class="text-on-surface font-semibold" id="breakdown-base">$580.00</span>
+</div>
+<div class="flex justify-between py-1">
+<span>256GB Storage Allocation</span>
+<span class="text-secondary font-semibold" id="breakdown-storage">+$40.00</span>
+</div>
+<div class="flex justify-between py-1">
+<span>Carrier Unlocked Premium</span>
+<span class="text-secondary font-semibold" id="breakdown-carrier">+$20.00</span>
+</div>
+<div class="flex justify-between py-1">
+<span>Cosmetic &amp; Hardware Deductions</span>
+<span class="text-on-surface font-semibold" id="breakdown-deductions">$0.00</span>
+</div>
+<div class="flex justify-between py-1">
+<span>Prepaid Shipping &amp; Insured Box</span>
+<span class="text-secondary font-semibold uppercase font-label-badge">FREE ($0.00)</span>
+</div>
+</div>
+<!-- Primary CTA Button -->
+<button class="w-full bg-primary-container text-on-primary-container py-3.5 px-space-md rounded-lg font-label-lg text-label-lg font-bold hover:bg-primary transition-all active:scale-[0.98] shadow-md flex items-center justify-center gap-space-sm mb-space-sm" onclick="lockOffer()" type="button">
+<span class="material-symbols-outlined text-xl">bolt</span>
+            Lock In Guaranteed Offer (<span id="cta-button-amount">$640.00</span>)
+          </button>
+<p class="font-body-sm text-body-sm text-center text-on-surface-variant">
+            No obligation. Return postage is 100% free if you change your mind.
+          </p>
+<!-- Free Shipping Kit Details Box -->
+<div class="mt-space-md p-space-md rounded-xl bg-surface-container-low flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined">markunread_mailbox</span>
+</div>
+<div class="text-on-surface">
+<div class="font-label-lg text-label-lg font-bold">What's in your free kit?</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Pre-padded shock box, sealed return bag, and prepaid label.</div>
+</div>
+</div>
+</div>
+<!-- Algorithmic Live Market Activity Feed -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant mb-space-sm">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+            Recent Trade-Ins Processed Today
+          </div>
+<div class="flex flex-col gap-space-xs font-body-sm text-body-sm">
+<div class="flex items-center justify-between py-1 text-on-surface">
+<span class="truncate">Galaxy S24 Ultra (512GB)</span>
+<span class="font-bold text-secondary font-label-md text-label-md shrink-0">$695 Payout</span>
+</div>
+<div class="flex items-center justify-between py-1 text-on-surface">
+<span class="truncate">Pixel 8 Pro (128GB)</span>
+<span class="font-bold text-secondary font-label-md text-label-md shrink-0">$390 Credit</span>
+</div>
+<div class="flex items-center justify-between py-1 text-on-surface">
+<span class="truncate">iPhone 13 (128GB)</span>
+<span class="font-bold text-secondary font-label-md text-label-md shrink-0">$245 Payout</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Step-by-Step Transparency Guide -->
+<div class="mt-space-xl pt-space-md">
+<div class="text-center max-w-xl mx-auto mb-space-lg">
+<span class="font-label-md text-label-md text-primary uppercase font-bold tracking-wider">How It Works</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-space-xs">From Old Phone to Fast Cash in 3 Steps</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm relative">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary-container font-headline-md text-headline-md mb-space-md">
+            1
+          </div>
+<h3 class="font-title-md text-title-md text-on-surface font-bold mb-space-xs">Order Free Pack Kit</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">We send a crush-resistant protective envelope with a prepaid express trackable label straight to your mailbox.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm relative">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-secondary font-headline-md text-headline-md mb-space-md">
+            2
+          </div>
+<h3 class="font-title-md text-title-md text-on-surface font-bold mb-space-xs">90-Point Hardware Lab Audit</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Our certified hardware technicians inspect display health, battery degradation, and wipe your memory using certified sanitization tools.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm relative">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary font-headline-md text-headline-md mb-space-md">
+            3
+          </div>
+<h3 class="font-title-md text-title-md text-on-surface font-bold mb-space-xs">Instant Payout Within 24h</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Once verified, funds land in your account immediately. Choose cash payout or get an automatic +15% boost toward any NexPhone purchase.</p>
+</div>
+</div>
+</div>
+<!-- Section: FAQ Accordion -->
+<div class="mt-space-xl pt-space-lg max-w-4xl mx-auto w-full">
+<div class="text-center mb-space-lg">
+<span class="font-label-md text-label-md text-primary uppercase font-bold tracking-wider">Got Questions?</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-space-xs">Frequently Asked Trade-In Questions</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">Everything you need to know about pricing guarantees, data protection, and delivery.</p>
+</div>
+<div class="flex flex-col gap-space-sm" id="faq-container">
+<!-- FAQ 1 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all">
+<button class="w-full p-space-md md:p-space-lg text-left flex items-center justify-between gap-space-md" onclick="toggleFaq('faq-1')" type="button">
+<span class="font-title-md text-title-md text-on-surface font-bold">What happens if my phone's condition doesn't match my questionnaire?</span>
+<span class="material-symbols-outlined text-outline transition-transform duration-200" id="faq-1-icon">expand_more</span>
+</button>
+<div class="px-space-md md:px-space-lg pb-space-lg hidden font-body-md text-body-md text-on-surface-variant" id="faq-1-body">
+            If our lab inspection discovers cosmetic defects, cracked glass, or battery degradation different from your assessment, we will send an updated quote along with high-definition diagnostic photographs. You will have 7 days to accept the adjusted value or decline. If declined, we mail your device back to you completely free of charge.
+          </div>
+</div>
+<!-- FAQ 2 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all">
+<button class="w-full p-space-md md:p-space-lg text-left flex items-center justify-between gap-space-md" onclick="toggleFaq('faq-2')" type="button">
+<span class="font-title-md text-title-md text-on-surface font-bold">How is my personal data permanently wiped?</span>
+<span class="material-symbols-outlined text-outline transition-transform duration-200" id="faq-2-icon">expand_more</span>
+</button>
+<div class="px-space-md md:px-space-lg pb-space-lg hidden font-body-md text-body-md text-on-surface-variant" id="faq-2-body">
+            Every smartphone received passes through our automated forensic erasure suite running Department of Defense (DoD 5220.22-M) and NIST SP 800-88 compliant sanitization algorithms. All NAND memory blocks, crypto-keys, and eSIM profiles are permanently scrubbed. You will receive an official verifiable Certificate of Data Erasure by email.
+          </div>
+</div>
+<!-- FAQ 3 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all">
+<button class="w-full p-space-md md:p-space-lg text-left flex items-center justify-between gap-space-md" onclick="toggleFaq('faq-3')" type="button">
+<span class="font-title-md text-title-md text-on-surface font-bold">How does the 14-Day Price Lock guarantee protect me?</span>
+<span class="material-symbols-outlined text-outline transition-transform duration-200" id="faq-3-icon">expand_more</span>
+</button>
+<div class="px-space-md md:px-space-lg pb-space-lg hidden font-body-md text-body-md text-on-surface-variant" id="faq-3-body">
+            Consumer tech values depreciate rapidly, especially leading up to annual flagship announcements. The moment you lock your offer on this calculator, your trade-in quote is legally frozen for 14 calendar days. Provided the package is postmarked within that 14-day window, your valuation is guaranteed regardless of broader secondary market fluctuations.
+          </div>
+</div>
+<!-- FAQ 4 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all">
+<button class="w-full p-space-md md:p-space-lg text-left flex items-center justify-between gap-space-md" onclick="toggleFaq('faq-4')" type="button">
+<span class="font-title-md text-title-md text-on-surface font-bold">Can I trade in a phone that is still on an active carrier installment plan?</span>
+<span class="material-symbols-outlined text-outline transition-transform duration-200" id="faq-4-icon">expand_more</span>
+</button>
+<div class="px-space-md md:px-space-lg pb-space-lg hidden font-body-md text-body-md text-on-surface-variant" id="faq-4-body">
+            Yes, you can trade in carrier-financed devices. Simply select your network provider during the hardware setup step. You remain responsible for continuing your regular installment payments or settling your remaining payoff balance with your original carrier. We cannot accept devices marked as lost, stolen, or blacklisted on the GSMA global database.
+          </div>
+</div>
+<!-- FAQ 5 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all">
+<button class="w-full p-space-md md:p-space-lg text-left flex items-center justify-between gap-space-md" onclick="toggleFaq('faq-5')" type="button">
+<span class="font-title-md text-title-md text-on-surface font-bold">How does the +15% NexPhone Store Credit bonus work?</span>
+<span class="material-symbols-outlined text-outline transition-transform duration-200" id="faq-5-icon">expand_more</span>
+</button>
+<div class="px-space-md md:px-space-lg pb-space-lg hidden font-body-md text-body-md text-on-surface-variant" id="faq-5-body">
+            Selecting NexPhone Store Credit applies an instantaneous +15% multiplier to your finalized cash value. Store credit has zero expiration date, is immediately loaded to your user account, and can be redeemed seamlessly toward any certified refurbished device, new flagship, or protective accessory in our catalog.
+          </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive State Engine -->
+<script>
+    const tradeInState = {
+      brand: 'apple',
+      modelName: 'iPhone 15 Pro Max',
+      basePrice: 580,
+      storageName: '256GB',
+      storageDelta: 40,
+      carrierName: 'Unlocked',
+      carrierDelta: 20,
+      screenPenalty: 0,
+      bodyPenalty: 0,
+      functionalDeduction: 0,
+      payoutMode: 'cash'
+    };
+
+    function recalculate() {
+      const grossValuation = tradeInState.basePrice + tradeInState.storageDelta + tradeInState.carrierDelta;
+      const totalDeductions = Math.abs(tradeInState.screenPenalty) + Math.abs(tradeInState.bodyPenalty) + tradeInState.functionalDeduction;
+      const netCash = Math.max(35, grossValuation - totalDeductions);
+      const creditVal = Math.round(netCash * 1.15 * 100) / 100;
+
+      // Update UI components
+      document.getElementById('cash-value-display').innerText = '$' + netCash.toFixed(2);
+      document.getElementById('credit-value-display').innerText = '$' + creditVal.toFixed(2);
+      
+      const activeAmount = tradeInState.payoutMode === 'cash' ? netCash : creditVal;
+      document.getElementById('cta-button-amount').innerText = '$' + activeAmount.toFixed(2);
+
+      // Breakdown line items
+      document.getElementById('breakdown-base').innerText = '$' + tradeInState.basePrice.toFixed(2);
+      document.getElementById('breakdown-storage').innerText = tradeInState.storageDelta > 0 ? '+$' + tradeInState.storageDelta.toFixed(2) : '$0.00';
+      document.getElementById('breakdown-carrier').innerText = tradeInState.carrierDelta > 0 ? '+$' + tradeInState.carrierDelta.toFixed(2) : '$0.00';
+      document.getElementById('breakdown-deductions').innerText = totalDeductions > 0 ? '-$' + totalDeductions.toFixed(2) : '$0.00';
+
+      // Summary label
+      document.getElementById('summary-device-title').innerText = tradeInState.modelName;
+      document.getElementById('summary-device-specs').innerText = tradeInState.storageName + ' • ' + tradeInState.carrierName + (totalDeductions === 0 ? ' • Pristine' : ' • Minor Wear');
+    }
+
+    function selectBrand(brand) {
+      tradeInState.brand = brand;
+      document.querySelectorAll('.brand-btn').forEach(b => {
+        b.classList.remove('bg-surface-container', 'text-primary', 'shadow-sm');
+        b.classList.add('bg-surface-container-low', 'text-on-surface');
+      });
+      const active = document.getElementById('brand-' + brand);
+      if (active) {
+        active.classList.add('bg-surface-container', 'text-primary', 'shadow-sm');
+        active.classList.remove('bg-surface-container-low');
+      }
+    }
+
+    function selectModel(name, basePrice) {
+      tradeInState.modelName = name;
+      tradeInState.basePrice = basePrice;
+      
+      document.querySelectorAll('.model-btn').forEach(btn => {
+        btn.classList.remove('bg-surface-container', 'text-primary', 'shadow-sm');
+        btn.classList.add('bg-surface-container-low', 'text-on-surface');
+        const icon = btn.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.innerText = 'radio_button_unchecked';
+          icon.classList.remove('text-primary');
+          icon.classList.add('text-outline');
+        }
+      });
+
+      const current = event.currentTarget;
+      current.classList.add('bg-surface-container', 'text-primary', 'shadow-sm');
+      current.classList.remove('bg-surface-container-low');
+      const curIcon = current.querySelector('.material-symbols-outlined');
+      if (curIcon) {
+        curIcon.innerText = 'radio_button_checked';
+        curIcon.classList.add('text-primary');
+        curIcon.classList.remove('text-outline');
+      }
+
+      recalculate();
+    }
+
+    function selectStorage(cap, delta) {
+      tradeInState.storageName = cap;
+      tradeInState.storageDelta = delta;
+
+      document.querySelectorAll('.storage-btn').forEach(btn => {
+        btn.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+        btn.classList.add('bg-surface-container-low', 'text-on-surface');
+      });
+
+      const active = event.currentTarget;
+      active.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+      active.classList.remove('bg-surface-container-low', 'text-on-surface');
+
+      recalculate();
+    }
+
+    function selectCarrier(carrier, delta) {
+      tradeInState.carrierName = carrier;
+      tradeInState.carrierDelta = delta;
+
+      document.querySelectorAll('.carrier-btn').forEach(btn => {
+        btn.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+        btn.classList.add('bg-surface-container-low', 'text-on-surface');
+      });
+
+      const active = event.currentTarget;
+      active.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+      active.classList.remove('bg-surface-container-low', 'text-on-surface');
+
+      recalculate();
+    }
+
+    function selectScreenCondition(type, penalty) {
+      tradeInState.screenPenalty = penalty;
+
+      document.querySelectorAll('.screen-btn').forEach(btn => {
+        btn.classList.remove('bg-surface-container', 'text-primary', 'shadow-sm');
+        btn.classList.add('bg-surface-container-low', 'text-on-surface');
+        const check = btn.querySelector('.mt-space-sm');
+        if (check) check.classList.add('opacity-0');
+      });
+
+      const active = event.currentTarget;
+      active.classList.add('bg-surface-container', 'text-primary', 'shadow-sm');
+      active.classList.remove('bg-surface-container-low');
+      const curCheck = active.querySelector('.mt-space-sm');
+      if (curCheck) curCheck.classList.remove('opacity-0');
+
+      recalculate();
+    }
+
+    function selectBodyCondition(type, penalty) {
+      tradeInState.bodyPenalty = penalty;
+
+      document.querySelectorAll('.body-btn').forEach(btn => {
+        btn.classList.remove('bg-surface-container', 'text-primary', 'shadow-sm');
+        btn.classList.add('bg-surface-container-low', 'text-on-surface');
+      });
+
+      const active = event.currentTarget;
+      active.classList.add('bg-surface-container', 'text-primary', 'shadow-sm');
+      active.classList.remove('bg-surface-container-low');
+
+      recalculate();
+    }
+
+    const functionalFails = {};
+    function toggleFunctional(key, isChecked, deduction) {
+      if (!isChecked) {
+        functionalFails[key] = deduction;
+      } else {
+        delete functionalFails[key];
+      }
+      tradeInState.functionalDeduction = Object.values(functionalFails).reduce((a, b) => a + b, 0);
+      recalculate();
+    }
+
+    function setPayoutMode(mode) {
+      tradeInState.payoutMode = mode;
+      const cashCard = document.getElementById('payout-cash-card');
+      const creditCard = document.getElementById('payout-credit-card');
+      const radioCashDot = document.getElementById('radio-cash-dot');
+      const radioCreditDot = document.getElementById('radio-credit-dot');
+      const radioCash = document.getElementById('radio-cash');
+      const radioCredit = document.getElementById('radio-credit');
+
+      if (mode === 'cash') {
+        cashCard.classList.add('bg-surface-container-lowest', 'shadow-sm');
+        creditCard.classList.remove('bg-surface-container-lowest', 'shadow-sm');
+        radioCashDot.classList.replace('bg-transparent', 'bg-primary');
+        radioCreditDot.classList.replace('bg-secondary', 'bg-transparent');
+        radioCash.classList.add('border-primary');
+        radioCredit.classList.remove('border-secondary');
+      } else {
+        creditCard.classList.add('bg-surface-container-lowest', 'shadow-sm');
+        cashCard.classList.remove('bg-surface-container-lowest', 'shadow-sm');
+        radioCreditDot.classList.replace('bg-transparent', 'bg-secondary');
+        radioCashDot.classList.replace('bg-primary', 'bg-transparent');
+        radioCredit.classList.add('border-secondary');
+        radioCash.classList.remove('border-primary');
+      }
+
+      recalculate();
+    }
+
+    function toggleFaq(id) {
+      const body = document.getElementById(id + '-body');
+      const icon = document.getElementById(id + '-icon');
+      if (body.classList.contains('hidden')) {
+        body.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        body.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    }
+
+    function lockOffer() {
+      const grossValuation = tradeInState.basePrice + tradeInState.storageDelta + tradeInState.carrierDelta;
+      const totalDeductions = Math.abs(tradeInState.screenPenalty) + Math.abs(tradeInState.bodyPenalty) + tradeInState.functionalDeduction;
+      const netCash = Math.max(35, grossValuation - totalDeductions);
+      const creditVal = Math.round(netCash * 1.15 * 100) / 100;
+      const finalAmt = tradeInState.payoutMode === 'cash' ? ('$' + netCash.toFixed(2)) : ('$' + creditVal.toFixed(2) + ' Store Credit');
+
+      alert('Valuation of ' + finalAmt + ' for ' + tradeInState.modelName + ' locked for 14 calendar days! Free prepaid kit is being dispatched.');
+    }
+
+    // Initial calculation trigger
+    recalculate();
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest"><div class="w-full bg-surface-container-low py-space-lg"><div class="max-w-[1360px] mx-auto px-margin md:px-margin-md lg:px-margin-lg grid grid-cols-1 md:grid-cols-3 gap-gutter"><div class="flex items-center gap-space-md"><div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary-container"><span class="material-symbols-outlined text-2xl">verified_user</span></div><div><div class="font-title-md text-title-md text-on-surface">12-Month Guarantee</div><div class="font-body-sm text-body-sm text-on-surface-variant">Industry-leading comprehensive warranty protection.</div></div></div><div class="flex items-center gap-space-md"><div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-secondary"><span class="material-symbols-outlined text-2xl">published_with_changes</span></div><div><div class="font-title-md text-title-md text-on-surface">30-Day Risk-Free Returns</div><div class="font-body-sm text-body-sm text-on-surface-variant">Zero restocking fees on verified quality returns.</div></div></div><div class="flex items-center gap-space-md"><div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary-container"><span class="material-symbols-outlined text-2xl">checklist</span></div><div><div class="font-title-md text-title-md text-on-surface">90-Point Hardware Lab Check</div><div class="font-body-sm text-body-sm text-on-surface-variant">Battery health, optics, and diagnostic certification.</div></div></div></div></div><div class="max-w-[1360px] mx-auto px-margin md:px-margin-md lg:px-margin-lg py-space-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-gutter-lg"><div class="lg:col-span-2 flex flex-col gap-space-md"><div class="flex items-center gap-space-sm"><img alt="NexPhone Exchange Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHCGJ3B7Jc0u8spw3cKg_RfqeaBpG9VaHV5aXZ8wG53EOWHlzZb81R3XXCqnPjvyzkWT4LR-MCYw9IgsuZz4AoKiVdefD9Qk4w9vfOgJNyJ6jvJlC6EsxZEg696Ma7rCo9KNR3VcsTAGbJIEO53poXZ_-MeRtOAA1i7rCO1_apy463KRMYNdT5_gJ3324gf2woe09vuuHHqY6gDgpz-_GWRmoftRpnbWk-z0qKk3HQVURiPf_CK7ql"/><span class="font-headline-sm text-headline-sm text-on-surface">NexPhone Exchange</span></div><p class="font-body-md text-body-md text-on-surface-variant max-w-sm">The high-precision marketplace for flagship smartphones, certified refurbished hardware, and direct algorithmic trade-in valuations.</p><div class="flex items-center gap-space-sm text-on-surface-variant pt-space-xs"><span class="material-symbols-outlined text-secondary">shield</span><span class="font-label-md text-label-md text-secondary">Certified Diagnostics &amp; Authentic Grade Verification</span></div></div><div><div class="font-title-md text-title-md text-on-surface mb-space-md">Hardware Categories</div><ul class="flex flex-col gap-space-sm"><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface"><a data-path="new-phones" href="#">Flagship Devices</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface"><a data-path="pre-owned-&amp;-refurbished" href="#">Certified Pre-Owned</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface"><a data-path="trade-in-calculator" href="#">Trade-In Estimator</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface"><a data-path="deals" href="#">Weekly Clearance</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface"><a data-path="battery-guarantee" href="#">Battery Health Standards</a></li></ul></div><div><div class="font-title-md text-title-md text-on-surface mb-space-md">Trust &amp; Support</div><ul class="flex flex-col gap-space-sm"><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface"><a data-path="grading-standards" href="#">Condition Grading System</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface"><a data-path="warranty-claims" href="#">NexPhone 1-Year Guarantee</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface"><a data-path="order-status" href="#">Track Repair &amp; Delivery</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface"><a data-path="diagnostic-report" href="#">Diagnostic Report Lookup</a></li><li class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface"><a data-path="support" href="#">Contact Engineering Support</a></li></ul></div><div class="flex flex-col gap-space-sm"><div class="font-title-md text-title-md text-on-surface">Market Radar Newsletter</div><p class="font-body-sm text-body-sm text-on-surface-variant">Get real-time market value shifts, premium inventory alerts, and instant trade-in bonus codes.</p><div class="flex flex-col gap-space-xs mt-space-xs"><input class="w-full bg-surface-container-low text-on-surface placeholder:text-outline px-3.5 py-2.5 rounded-lg font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary-container" placeholder="Enter your work or personal email" type="email"/><button class="w-full bg-primary-container text-on-primary-container py-2.5 px-4 rounded-lg font-label-lg text-label-lg hover:bg-primary transition-all active:scale-[0.98]" type="button">Subscribe to Alerts</button></div></div></div><div class="bg-surface-container-low py-space-md"><div class="max-w-[1360px] mx-auto px-margin md:px-margin-md lg:px-margin-lg flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant"><div class="font-body-sm text-body-sm">© 2025 NexPhone Exchange Inc. Certified Diagnostic Benchmark Standards.</div><div class="flex items-center gap-space-md font-body-sm text-body-sm"><a class="hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="terms-of-service" href="#">Terms of Service</a><a class="hover:text-on-surface transition-colors" data-path="recycle-compliance" href="#">E-Waste Compliance</a></div></div></div></footer></body></html>

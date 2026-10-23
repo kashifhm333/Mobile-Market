@@ -1,0 +1,95 @@
+erDiagram
+    USERS ||--o{ LISTINGS : owns
+    USERS ||--o{ FAVORITES : bookmarks
+    LISTINGS ||--o{ FAVORITES : targeted_by
+    USERS ||--o{ CONVERSATIONS : buys_in
+    USERS ||--o{ CONVERSATIONS : sells_in
+    LISTINGS ||--o{ CONVERSATIONS : discusses
+    CONVERSATIONS ||--o{ MESSAGES : holds
+    USERS ||--o{ REPORTS : reports
+    USERS ||--o{ AUDIT_LOGS : performs
+
+    USERS {
+        ObjectId _id PK
+        string name
+        string email UK
+        string passwordHash
+        string role
+        string status
+        string phone
+        string city
+        string avatarUrl
+        date createdAt
+        date updatedAt
+    }
+
+    LISTINGS {
+        ObjectId _id PK
+        ObjectId sellerId FK
+        string title
+        string brand
+        string model
+        string variant
+        string condition
+        number price
+        string currency
+        boolean negotiable
+        string description
+        array images
+        string city
+        object specifications
+        string status
+        ObjectId reservedFor FK
+        date createdAt
+        date updatedAt
+    }
+
+    FAVORITES {
+        ObjectId _id PK
+        ObjectId userId FK
+        ObjectId listingId FK
+        date createdAt
+    }
+
+    CONVERSATIONS {
+        ObjectId _id PK
+        ObjectId listingId FK
+        ObjectId buyerId FK
+        ObjectId sellerId FK
+        string status
+        number proposedPrice
+        string lastMessage
+        date lastMessageAt
+        date createdAt
+    }
+
+    MESSAGES {
+        ObjectId _id PK
+        ObjectId conversationId FK
+        ObjectId senderId FK
+        string body
+        date readAt
+        date createdAt
+    }
+
+    REPORTS {
+        ObjectId _id PK
+        ObjectId reporterId FK
+        string targetType
+        ObjectId targetId
+        string reason
+        string description
+        string status
+        ObjectId reviewedBy FK
+        date createdAt
+    }
+
+    AUDIT_LOGS {
+        ObjectId _id PK
+        ObjectId actorId FK
+        string action
+        string targetType
+        string targetId
+        object metadata
+        date createdAt
+    }

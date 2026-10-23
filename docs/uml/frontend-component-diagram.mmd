@@ -1,0 +1,70 @@
+graph TD
+    App[App.jsx] --> Router[React Router]
+
+    subgraph Contexts
+        AuthCtx[AuthContext]
+        ToastCtx[ToastContext]
+        FavCtx[FavoritesContext]
+    end
+
+    Router --> PublicLayout[Public Layout]
+    Router --> AuthLayout[Authenticated Layout]
+    Router --> AdminLayout[Admin Layout]
+
+    subgraph Layout Components
+        Navbar[Navbar & Header]
+        Footer[Footer & Info Links]
+        Sidebar[Admin / Dashboard Sidebar]
+    end
+
+    PublicLayout --> Navbar
+    PublicLayout --> Footer
+    AuthLayout --> Navbar
+    AuthLayout --> Footer
+    AdminLayout --> Sidebar
+    AdminLayout --> Navbar
+
+    subgraph Pages
+        HomePage[HomePage]
+        BrowsePage[BrowseListingsPage]
+        ListingDetailPage[ListingDetailPage]
+        LoginPage[LoginPage]
+        RegisterPage[RegisterPage]
+        CreateListingPage[CreateListingPage]
+        MyListingsPage[MyListingsPage]
+        FavoritesPage[FavoritesPage]
+        ConversationsPage[ConversationsPage]
+        AdminDashboard[AdminDashboardPage]
+        AdminListings[AdminListingsPage]
+        AdminReports[AdminReportsPage]
+    end
+
+    PublicLayout --> HomePage
+    PublicLayout --> BrowsePage
+    PublicLayout --> ListingDetailPage
+    PublicLayout --> LoginPage
+    PublicLayout --> RegisterPage
+
+    AuthLayout --> CreateListingPage
+    AuthLayout --> MyListingsPage
+    AuthLayout --> FavoritesPage
+    AuthLayout --> ConversationsPage
+
+    AdminLayout --> AdminDashboard
+    AdminLayout --> AdminListings
+    AdminLayout --> AdminReports
+
+    subgraph Reusable Components
+        ListingCard[ListingCard]
+        ListingFilters[ListingFilters]
+        ImageGallery[ImageGallery]
+        StatusBadge[StatusBadge]
+        Modal[Modal / Dialog]
+        SafetyBanner[SafetyBanner]
+    end
+
+    BrowsePage --> ListingCard
+    BrowsePage --> ListingFilters
+    ListingDetailPage --> ImageGallery
+    ListingDetailPage --> SafetyBanner
+    MyListingsPage --> StatusBadge

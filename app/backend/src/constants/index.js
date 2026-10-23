@@ -1,0 +1,67 @@
+export const USER_ROLES = {
+  USER: 'USER',
+  ADMIN: 'ADMIN'
+};
+
+export const USER_STATUSES = {
+  ACTIVE: 'ACTIVE',
+  SUSPENDED: 'SUSPENDED',
+  PENDING_VERIFICATION: 'PENDING_VERIFICATION'
+};
+
+export const LISTING_CONDITIONS = {
+  NEW: 'NEW',
+  LIKE_NEW: 'LIKE_NEW',
+  GOOD: 'GOOD',
+  FAIR: 'FAIR'
+};
+
+export const LISTING_STATUSES = {
+  DRAFT: 'DRAFT',
+  ACTIVE: 'ACTIVE',
+  RESERVED: 'RESERVED',
+  SOLD: 'SOLD',
+  ARCHIVED: 'ARCHIVED',
+  REJECTED: 'REJECTED'
+};
+
+export const BRANDS = [
+  'Apple',
+  'Samsung',
+  'Google',
+  'OnePlus',
+  'Xiaomi',
+  'Motorola',
+  'Sony',
+  'Huawei',
+  'Oppo',
+  'Vivo',
+  'Other'
+];
+
+export const CONVERSATION_STATUSES = {
+  OPEN: 'OPEN',
+  OFFER_PENDING: 'OFFER_PENDING',
+  RESERVED: 'RESERVED',
+  CLOSED: 'CLOSED'
+};
+
+export const REPORT_TARGETS = {
+  LISTING: 'LISTING',
+  USER: 'USER'
+};
+
+export const REPORT_REASONS = {
+  FRAUD: 'FRAUD',
+  SPAM: 'SPAM',
+  INAPPROPRIATE: 'INAPPROPRIATE',
+  MISLEADING_SPECS: 'MISLEADING_SPECS',
+  OTHER: 'OTHER'
+};
+
+export const REPORT_STATUSES = {
+  PENDING: 'PENDING',
+  INVESTIGATING: 'INVESTIGATING',
+  RESOLVED: 'RESOLVED',
+  DISMISSED: 'DISMISSED'
+};

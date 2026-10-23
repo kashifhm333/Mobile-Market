@@ -1,0 +1,1020 @@
+# MASTER PROMPT: Build MobileMart — Production-Grade Full-Stack Marketplace
+
+## 1. Your Role
+
+Act as a senior software architect, full-stack developer, UI/UX engineer, database architect, application security engineer, DevOps engineer, and QA engineer.
+
+Your task is to transform my existing UI design into a **complete, secure, maintainable, tested, production-ready web application** named MobileMart.
+
+Do not build a simple demo, static prototype, or collection of disconnected pages. Build a real application with a functional frontend, backend, database, authentication, authorization, business logic, validation, error handling, tests, and deployment documentation.
+
+Work systematically. Understand the requirements and architecture before writing the main application code.
+
+## 2. Project Overview
+
+**Project name:** MobileMart
+
+**Purpose:** An online marketplace for buying and selling new and used mobile phones.
+
+MobileMart connects people who want to sell their phones with people who want to buy them.
+
+There are three primary types of visitors:
+
+1. Guests who can browse and search phone listings.
+2. Registered users who can buy, sell, manage listings, save favorites, and contact other users.
+3. Administrators who manage users, listings, reports, and marketplace moderation.
+
+A registered user can be both a buyer and a seller. Do not create separate buyer and seller account types.
+
+### Core business rule: No online payment processing
+
+Buyers and sellers negotiate and complete their payments directly outside MobileMart.
+
+MobileMart must not collect money, process payments, hold funds, offer escrow, store payment credentials, or claim that a payment has been verified.
+
+The application manages listings, buyer inquiries, seller communication, and listing status. The seller confirms when a phone has been sold.
+
+---
+
+## 3. Existing UI — Inspect Before Changing Anything
+
+I have already designed the website UI using Google Stitch. All relevant UI files are inside the existing `UI/` directory.
+
+**The existing UI is the design source of truth.**
+
+Before implementing the application:
+
+1. Inspect the repository and its directory structure.
+2. Inspect every relevant file inside `UI/`, including HTML, CSS, JavaScript, React code, images, icons, and design assets.
+3. Identify the intended pages, navigation, layouts, colors, typography, spacing, cards, buttons, forms, and responsive behavior.
+4. Map existing UI components to the application features described in this prompt.
+5. Identify missing screens, inconsistent components, and interaction gaps.
+6. Create a UI inventory and implementation plan.
+
+Preserve the original design wherever practical. Do not replace the supplied UI with a generic AI-generated template.
+
+You may improve responsiveness, accessibility, consistency, usability, and code quality, but retain the original design direction.
+
+Reuse existing assets instead of recreating them unnecessarily.
+
+If the UI is static HTML/CSS/JavaScript, migrate it into reusable React components while preserving the appearance.
+
+If the UI is incomplete, implement the missing screens consistently with the supplied design.
+
+Do not delete, overwrite, or restructure the original UI files without a clear reason and a safe migration plan.
+
+---
+
+## 4. Mandatory Technology Stack
+
+### Frontend
+
+- React.js
+- Vite
+- JavaScript with JSX
+- React Router
+- Axios for API communication
+- Reusable components and feature-based modules
+- Context API or another justified state-management solution
+- Responsive CSS based on the supplied UI
+- React Hook Form and a suitable schema validation library if they improve form maintainability
+
+Use semantic HTML and accessible components. Avoid introducing a large UI framework if it conflicts with the existing design.
+
+### Backend
+
+- Node.js
+- Express.js
+- JavaScript using ES modules consistently
+- MongoDB
+- Mongoose
+- REST API architecture
+- Centralized request validation and error handling
+- Authentication and role-based authorization
+- Structured application logging
+
+### Testing
+
+- Vitest
+- React Testing Library
+- Jest or Vitest for backend testing
+- Supertest for API integration tests
+- MongoDB Memory Server or an isolated test database
+
+Choose compatible dependency versions and document them. Avoid deprecated packages.
+
+### Additional tools
+
+- Git
+- npm
+- ESLint
+- Environment variables
+- OpenAPI/Swagger API documentation
+- Docker and Docker Compose for local development and repeatable testing
+- GitHub Actions for CI, if configured within the repository
+
+Do not introduce microservices, Kubernetes, Redis, or other infrastructure merely for appearance. Build a well-structured modular monolith that can scale as real requirements emerge.
+
+---
+
+## 5. Required Project Structure
+
+Use the following structure as the target architecture. Adapt it only when the existing repository or a justified engineering decision requires it.
+
+```text
+MobileMart/
+├── UI/
+├── docs/
+│   ├── requirements.md
+│   ├── architecture.md
+│   ├── frontend-architecture.md
+│   ├── backend-architecture.md
+│   ├── database-design.md
+│   ├── api-specification.md
+│   ├── security.md
+│   ├── deployment.md
+│   ├── testing-strategy.md
+│   └── uml/
+│       ├── system-context.mmd
+│       ├── use-case-diagram.mmd
+│       ├── frontend-component-diagram.mmd
+│       ├── frontend-class-diagram.mmd
+│       ├── backend-component-diagram.mmd
+│       ├── backend-class-diagram.mmd
+│       ├── database-er-diagram.mmd
+│       ├── authentication-sequence.mmd
+│       ├── listing-sequence.mmd
+│       ├── inquiry-sequence.mmd
+│       ├── sale-sequence.mmd
+│       └── moderation-sequence.mmd
+├── app/
+│   ├── frontend/
+│   │   ├── public/
+│   │   ├── src/
+│   │   │   ├── assets/
+│   │   │   ├── components/
+│   │   │   ├── layouts/
+│   │   │   ├── pages/
+│   │   │   ├── features/
+│   │   │   ├── hooks/
+│   │   │   ├── context/
+│   │   │   ├── services/
+│   │   │   ├── routes/
+│   │   │   ├── utils/
+│   │   │   ├── constants/
+│   │   │   ├── styles/
+│   │   │   ├── App.jsx
+│   │   │   └── main.jsx
+│   │   ├── tests/
+│   │   ├── package.json
+│   │   └── vite.config.js
+│   └── backend/
+│       ├── src/
+│       │   ├── config/
+│       │   ├── models/
+│       │   ├── controllers/
+│       │   ├── services/
+│       │   ├── repositories/
+│       │   ├── routes/
+│       │   ├── middleware/
+│       │   ├── validators/
+│       │   ├── utils/
+│       │   ├── constants/
+│       │   ├── jobs/
+│       │   ├── app.js
+│       │   └── server.js
+│       ├── tests/
+│       ├── package.json
+│       └── .env.example
+├── .github/
+│   └── workflows/
+├── .gitignore
+├── package.json
+├── docker-compose.yml
+└── README.md
+```
+
+Do not create empty or unnecessary modules just to match the directory tree.
+
+Keep the frontend and backend independently runnable. Provide clear npm scripts for development, production builds, linting, and tests.
+
+If the frontend directory does not contain a usable application, initialize it using Vite inside `app/frontend`.
+
+---
+
+## 6. Create the UML and Architecture Diagrams First
+
+Before implementing the main business logic, create the diagrams under `docs/uml/`.
+
+Use Mermaid source files so the diagrams remain editable and can be version-controlled.
+
+The diagrams must represent the actual planned architecture, not decorative documentation. Keep them updated as implementation decisions change.
+
+### Diagram 1: System Context
+
+Show:
+
+- Guest visitor.
+- Registered user.
+- Administrator.
+- React frontend.
+- Express REST API.
+- MongoDB.
+- External image-storage provider.
+- External email provider.
+- Buyer and seller communication.
+- Payment between buyer and seller outside MobileMart.
+
+Clearly show that MobileMart does not process payments.
+
+### Diagram 2: Use-Case Diagram
+
+Represent the actions available to guests, registered users, and administrators.
+
+Include:
+
+- Browse listings.
+- Search and filter phones.
+- Register and authenticate.
+- Manage profiles.
+- Create, edit, publish, and archive listings.
+- Upload and manage images.
+- Manage favorites.
+- Contact sellers.
+- Exchange messages.
+- Coordinate a potential sale.
+- Confirm that a phone has sold.
+- Report listings and users.
+- Moderate listings and accounts.
+
+### Diagram 3: Frontend Component Diagram
+
+Show the React application architecture and component relationships.
+
+Include:
+
+- Application entry point.
+- Router.
+- Public layout.
+- Authenticated layout.
+- Admin layout.
+- Navigation and footer.
+- Home page.
+- Listing search page.
+- Listing details page.
+- Login and registration pages.
+- Create/edit listing forms.
+- Seller dashboard.
+- Favorites page.
+- Conversations and inquiries.
+- Profile and settings pages.
+- Admin dashboard.
+- Shared components such as listing cards, filters, image galleries, forms, dialogs, loaders, and notifications.
+- API service layer.
+- Authentication context.
+- Shared hooks and validation utilities.
+
+Explain which components are reusable and which belong to specific features.
+
+### Diagram 4: Frontend Class and Module Diagram
+
+React is component-oriented, so do not force a traditional object-oriented class design where it does not fit.
+
+Represent important modules, components, hooks, contexts, service functions, and their dependencies.
+
+For example:
+
+- `AuthContext`
+- `useAuth`
+- `useListings`
+- `useFavorites`
+- `useConversations`
+- `listingService`
+- `authService`
+- `favoriteService`
+- `conversationService`
+- `ProtectedRoute`
+- `AdminRoute`
+
+Document the responsibility and relationships of each module.
+
+### Diagram 5: Backend Component Diagram
+
+Show the request flow:
+
+React frontend → Express routes → middleware → controllers → services → repositories/models → MongoDB.
+
+Include authentication, authorization, validation, error handling, logging, image storage, email delivery, and administrative moderation.
+
+Explain the responsibility of each layer and prohibit business logic from being duplicated across controllers.
+
+### Diagram 6: Backend Class Diagram
+
+Create a detailed class/domain model with attributes, methods or responsibilities, relationships, and multiplicities.
+
+Include these core entities:
+
+**User**
+- id
+- name
+- email
+- passwordHash
+- role
+- status
+- profile
+- createdAt
+- updatedAt
+
+**Listing**
+- id
+- sellerId
+- title
+- brand
+- model
+- variant
+- condition
+- price
+- currency
+- description
+- images
+- city
+- status
+- negotiable
+- createdAt
+- updatedAt
+
+**Favorite**
+- id
+- userId
+- listingId
+- createdAt
+
+**Conversation**
+- id
+- listingId
+- buyerId
+- sellerId
+- status
+- createdAt
+- updatedAt
+
+**Message**
+- id
+- conversationId
+- senderId
+- body
+- readAt
+- createdAt
+
+**Inquiry or Deal**
+- id
+- listingId
+- buyerId
+- sellerId
+- proposedPrice
+- status
+- createdAt
+- updatedAt
+
+**Report**
+- id
+- reporterId
+- targetType
+- targetId
+- reason
+- description
+- status
+- reviewedBy
+- reviewedAt
+- createdAt
+
+**AuditLog**
+- id
+- actorId
+- action
+- targetType
+- targetId
+- metadata
+- createdAt
+
+Add other domain entities only when needed.
+
+Show these relationships:
+
+- One user can own multiple listings.
+- Each listing has one seller.
+- One user can save multiple listings.
+- Each favorite references a user and a listing.
+- A conversation belongs to a listing and has a buyer and seller.
+- A conversation contains multiple messages.
+- Each message has one sender.
+- An inquiry references a listing, buyer, and seller.
+- Reports are submitted by users and may be reviewed by administrators.
+- Audit records capture important actions.
+
+Document the difference between domain models, Mongoose schemas, services, repositories, and controllers.
+
+### Diagram 7: Database Relationship Diagram
+
+Create an ER-style diagram for the MongoDB collections.
+
+At minimum, cover:
+
+- `users`
+- `listings`
+- `favorites`
+- `conversations`
+- `messages`, if stored separately
+- `inquiries` or `deals`
+- `reports`
+- `auditlogs`
+
+Document:
+
+- ObjectId references.
+- Embedded documents.
+- Unique constraints.
+- Required fields.
+- Validation rules.
+- Indexes.
+- Deletion and retention behavior.
+- Pagination and query patterns.
+
+Do not model MongoDB as if it were a relational database. Justify when to embed data and when to use references.
+
+### Diagram 8: Sequence Diagrams
+
+Create separate sequence diagrams for:
+
+1. Registration and login.
+2. Creating and publishing a listing.
+3. Uploading listing images.
+4. Searching and filtering listings.
+5. Adding and removing favorites.
+6. Contacting a seller.
+7. Sending a message.
+8. Coordinating a sale with direct external payment.
+9. Seller confirming a sale.
+10. Reporting a listing and administrator moderation.
+
+Show validation, authorization, service execution, database operations, error branches, and relevant state changes.
+
+### Diagram 9: Activity Diagrams
+
+Document the workflows for:
+
+- Publishing a listing.
+- Buyer inquiry and seller response.
+- Sale coordination and listing status changes.
+- Report submission and moderation.
+- Registration and email verification.
+
+### Diagram quality requirements
+
+Every diagram must:
+
+- Have a clear title.
+- Use consistent names.
+- Show meaningful relationships and multiplicities.
+- Match the implemented architecture.
+- Render without syntax errors.
+- Avoid unnecessary complexity.
+
+Create `docs/architecture.md` to explain the architecture decisions in plain language.
+
+---
+
+## 7. Database Design and Business Entities
+
+Design the MongoDB schema before implementing the API.
+
+### User
+
+Include identity, authentication, public profile, role, account status, timestamps, and any required verification fields.
+
+Never return password hashes or private authentication fields through public API responses.
+
+### Listing
+
+Support new and used phones.
+
+Recommended condition values:
+
+- `NEW`
+- `LIKE_NEW`
+- `GOOD`
+- `FAIR`
+
+Recommended listing statuses:
+
+- `DRAFT`
+- `ACTIVE`
+- `RESERVED`
+- `SOLD`
+- `ARCHIVED`
+- `REJECTED`
+
+Define valid status transitions. A listing must not become sold simply because a buyer submits an inquiry.
+
+Validate price, currency, image count, field lengths, brand, model, condition, location, and other relevant inputs.
+
+Store image metadata and storage URLs rather than image binaries in ordinary MongoDB listing documents.
+
+### Favorite
+
+Create a unique compound index on `(userId, listingId)` to prevent duplicate favorites.
+
+### Conversation and Message
+
+Ensure only the buyer, seller, or an authorized administrator can access relevant conversation data.
+
+Prevent arbitrary users from reading messages by guessing a conversation ID.
+
+### Inquiry or Deal
+
+Distinguish inquiry, negotiation, reservation, and seller-confirmed sale states.
+
+Do not create a payment entity or payment-processing service.
+
+### Report and AuditLog
+
+Support listing and user reports, moderation status, reviewer information, and important administrative audit events.
+
+Use appropriate indexes for common searches, lookups, sorting, pagination, and authorization-related queries.
+
+Implement pagination limits and protect against expensive unbounded queries.
+
+---
+
+## 8. Backend API and Business Logic
+
+Use a versioned REST API under `/api/v1`.
+
+Implement consistent request validation, response formats, HTTP status codes, and error messages.
+
+### Authentication
+
+Provide endpoints for:
+
+- Registration.
+- Login.
+- Logout.
+- Current user profile.
+- Refresh or session renewal, if using refresh-based authentication.
+- Email verification.
+- Password reset.
+- Profile updates.
+
+Choose a secure authentication strategy and document it.
+
+Prefer secure, HTTP-only, appropriately configured cookies for browser sessions or tokens. If using cookies, implement CSRF protection where required. Configure CORS for explicit trusted frontend origins.
+
+Never store long-lived authentication tokens in browser local storage by default.
+
+Use a maintained password-hashing library with suitable parameters. Implement login rate limiting, secure password-reset tokens, token expiry, and generic responses where needed to prevent account enumeration.
+
+### Listings
+
+Implement endpoints for:
+
+- Listing search and pagination.
+- Listing details.
+- Creating a listing.
+- Updating a listing.
+- Publishing a draft.
+- Archiving a listing.
+- Reserving a listing where allowed.
+- Seller-confirmed sale.
+- Managing the authenticated user's listings.
+
+Public listing endpoints should expose only active listings unless a specific authorized workflow permits otherwise.
+
+### Favorites
+
+Implement add, remove, and list-favorites endpoints.
+
+Enforce unique favorites and user ownership.
+
+### Conversations and Inquiries
+
+Implement:
+
+- Starting an inquiry.
+- Listing the user's conversations.
+- Viewing a conversation.
+- Sending messages.
+- Marking messages as read.
+- Closing an inquiry.
+- Managing an agreed reservation if implemented.
+
+Prevent users from starting a conversation with themselves.
+
+Ensure only authorized participants can read or send messages.
+
+### Reports and Administration
+
+Implement:
+
+- Reporting listings and users.
+- Listing reports for administrators.
+- Reviewing reports.
+- Rejecting or removing listings with a recorded reason.
+- Suspending accounts where authorized.
+- Reviewing audit records.
+
+Never trust a role value supplied by the frontend.
+
+### API documentation
+
+Generate OpenAPI/Swagger documentation covering:
+
+- Routes and HTTP methods.
+- Authentication requirements.
+- Request parameters.
+- Request schemas.
+- Response schemas.
+- Error responses.
+- Authorization requirements.
+
+Use consistent error responses and never expose stack traces, database credentials, or internal secrets to clients.
+
+---
+
+## 9. Image Uploads and External Services
+
+Implement secure phone-image uploads through a configured object-storage or image-storage provider.
+
+Requirements:
+
+- Validate file type using more than the file extension.
+- Restrict file size and image count.
+- Generate safe unique object names.
+- Prevent executable or malicious file uploads.
+- Avoid trusting arbitrary client-provided storage URLs.
+- Delete replaced or removed images safely.
+- Use image optimization and thumbnails where supported.
+- Keep provider credentials on the backend.
+- Use environment variables for provider configuration.
+
+If the external provider is not configured, document the setup and provide a safe local development option.
+
+Do not silently substitute fake upload success for a real upload.
+
+If email delivery is not configured, make the missing configuration explicit and ensure the application behaves safely.
+
+---
+
+## 10. Frontend Pages and Functionality
+
+Implement and connect all relevant pages to the backend.
+
+### Public pages
+
+- Home page.
+- Browse phones.
+- Search results.
+- Listing details.
+- Seller public profile.
+- Login.
+- Registration.
+- Forgot password.
+- Reset password.
+- Privacy policy.
+- Terms of service.
+- Safety guidelines.
+- Not-found page.
+
+### Authenticated user pages
+
+- User dashboard.
+- Create listing.
+- Edit listing.
+- My listings.
+- Listing preview.
+- Favorites.
+- Conversations.
+- Inquiry details.
+- Profile.
+- Account settings.
+
+### Administrator pages
+
+- Admin dashboard.
+- User management.
+- Listing moderation.
+- Report management.
+- Audit logs.
+
+Protect frontend routes for usability, but enforce every permission on the backend as well.
+
+### UI quality requirements
+
+- Match the existing Google Stitch UI.
+- Make the application responsive across mobile, tablet, and desktop.
+- Use consistent spacing, typography, buttons, cards, forms, and dialogs.
+- Provide loading, empty, success, and error states.
+- Implement form-level validation and useful error messages.
+- Include confirmation dialogs for destructive actions.
+- Prevent duplicate form submissions.
+- Use accessible labels, keyboard navigation, and visible focus states.
+- Avoid horizontal overflow and broken layouts.
+- Use appropriate skeletons or loading indicators.
+- Provide image fallbacks.
+- Ensure all navigation links and buttons perform their advertised actions.
+
+Do not use fake listings, hardcoded user profiles, or mock API responses in the production application. If seed data is required for development, isolate it in a documented seed script.
+
+---
+
+## 11. Production Security Requirements
+
+Treat security as a core engineering requirement.
+
+Implement and verify:
+
+- Authentication and server-side authorization.
+- Role-based access control.
+- Input validation and normalization.
+- Mongoose query safety.
+- Protection against NoSQL injection.
+- Rate limiting on sensitive endpoints.
+- Secure HTTP headers.
+- Explicit CORS configuration.
+- Password hashing.
+- Secure cookie configuration.
+- CSRF protection where required.
+- Secure password reset and email verification.
+- File upload restrictions.
+- Ownership checks for all user-controlled resources.
+- Safe error responses.
+- Secret management through environment variables.
+- Request size limits.
+- Pagination limits.
+- Audit logging for sensitive administrative actions.
+- Dependency vulnerability checks.
+- Protection against mass assignment.
+- Appropriate data-retention and account-deletion policies.
+- Safe logging that excludes passwords, session tokens, and sensitive message content.
+
+Never commit `.env` files, credentials, API keys, or production secrets.
+
+Create `.env.example` files with placeholder values only.
+
+Do not hardcode a production MongoDB URI or administrator password.
+
+Do not expose private seller information, internal identifiers unnecessarily, or administrative controls to unauthorized users.
+
+---
+
+## 12. Reliability and Maintainability
+
+Implement:
+
+- Centralized configuration.
+- A reusable error-handling middleware.
+- Request validation schemas.
+- Consistent logging.
+- A health-check endpoint.
+- Graceful server shutdown.
+- Database connection handling.
+- Appropriate database indexes.
+- Safe handling of concurrent listing updates.
+- Clear service-layer responsibilities.
+- Reusable frontend API clients.
+- Shared response and error-handling utilities.
+- Environment-specific configuration.
+- Useful README documentation.
+
+Use database transactions only where appropriate and supported by the MongoDB deployment configuration. Do not assume transactions work in every standalone local MongoDB setup.
+
+Prevent conflicting sale actions from silently overwriting each other. Use conditional updates, version checks, or other appropriate concurrency controls.
+
+Do not add caching, queues, or distributed infrastructure unless justified by actual requirements.
+
+---
+
+## 13. Testing and Verification
+
+A production-oriented application must be verified through automated tests and real execution.
+
+### Backend tests
+
+Test:
+
+- Registration and login.
+- Invalid credentials.
+- Authorization and role restrictions.
+- Invalid request bodies.
+- Listing creation and editing.
+- Listing ownership enforcement.
+- Listing search and filters.
+- Pagination limits.
+- Favorites and duplicate prevention.
+- Conversation participant permissions.
+- Unauthorized message access.
+- Inquiry lifecycle.
+- Seller-confirmed sale.
+- Concurrent listing status changes.
+- Report submission and moderation.
+- Rate limiting.
+- Invalid or malicious upload attempts.
+- Error handling.
+
+### Frontend tests
+
+Test:
+
+- Routing.
+- Authentication state.
+- Protected pages.
+- Listing forms.
+- Form validation.
+- Listing search and filters.
+- Favorites.
+- Loading and error states.
+- Conversation interfaces.
+- Unauthorized access handling.
+- Responsive behavior where automated tooling permits.
+
+### Integration and end-to-end tests
+
+Verify the complete workflow:
+
+1. A user registers and authenticates.
+2. The user creates and publishes a phone listing.
+3. A guest searches and views the listing.
+4. Another registered user saves the listing.
+5. The buyer contacts the seller.
+6. Both parties coordinate the sale and payment outside MobileMart.
+7. The seller confirms the sale.
+8. The listing becomes unavailable for new purchase inquiries.
+9. An administrator can review a report.
+10. Unauthorized users cannot access private resources.
+
+Run linting, tests, dependency checks, and the frontend production build.
+
+Where practical, use browser automation to verify navigation and important user workflows against the running application.
+
+**Do not claim that a test passed unless you actually executed it and observed the result.** Clearly report any tests that could not be run and why.
+
+---
+
+## 14. Deployment and Project Documentation
+
+Provide:
+
+- Root-level development scripts.
+- Independent frontend and backend scripts.
+- Dockerfiles where appropriate.
+- Docker Compose for local development.
+- `.env.example` files.
+- MongoDB setup instructions.
+- Database index initialization.
+- Optional development seed data.
+- Production build instructions.
+- Reverse-proxy and HTTPS deployment guidance.
+- GitHub Actions CI workflow.
+- Health-check documentation.
+- Troubleshooting instructions.
+
+Document the deployment environment and any required external services.
+
+Do not claim that the application is deployed or production-ready merely because the code has been generated.
+
+Distinguish implemented features, tested features, configured external services, and outstanding deployment tasks.
+
+---
+
+## 15. Required Working Method
+
+Follow these phases in order.
+
+### Phase 1 — Repository and UI Audit
+
+Inspect the current repository and the complete relevant `UI/` folder.
+
+Identify existing assets, screens, reusable components, missing pages, and implementation constraints.
+
+Deliver a concise audit report and implementation plan.
+
+Do not overwrite existing files before understanding their purpose.
+
+### Phase 2 — Requirements and Architecture
+
+Create:
+
+- `docs/requirements.md`
+- `docs/architecture.md`
+- `docs/frontend-architecture.md`
+- `docs/backend-architecture.md`
+- `docs/database-design.md`
+
+Define core workflows, authorization rules, listing statuses, API boundaries, and database relationships.
+
+### Phase 3 — UML and Class Diagrams
+
+Create all required Mermaid diagrams in `docs/uml/`.
+
+Validate their syntax and consistency.
+
+Review the diagrams against the requirements before beginning the primary implementation.
+
+### Phase 4 — Project Foundation
+
+Initialize and configure the React frontend and Express backend.
+
+Implement environment configuration, database connection, error handling, routing, logging, linting, and test infrastructure.
+
+Confirm that both applications start correctly.
+
+### Phase 5 — Backend Implementation
+
+Implement database models, validators, services, repositories where useful, controllers, routes, authentication, authorization, and the complete business logic.
+
+Write backend tests alongside the implementation.
+
+### Phase 6 — Frontend Implementation
+
+Integrate the existing UI into React components and connect each feature to real backend endpoints.
+
+Preserve the original design while implementing the required interactions and states.
+
+### Phase 7 — Integration
+
+Connect frontend, backend, MongoDB, image storage, and email delivery where configured.
+
+Verify environment variables, CORS, authentication, session behavior, and error handling.
+
+### Phase 8 — Testing and Hardening
+
+Run unit, integration, and available end-to-end tests.
+
+Fix discovered defects. Check access control, invalid inputs, concurrency, responsiveness, and production build output.
+
+Update the UML diagrams and documentation to reflect the final implementation.
+
+### Phase 9 — Final Review
+
+Produce a final implementation report containing:
+
+- Completed features.
+- Implemented architecture.
+- Important design decisions.
+- API endpoint summary.
+- Database collection summary.
+- Security measures.
+- Commands to install and run the project.
+- Test commands and actual results.
+- Environment variables and external setup requirements.
+- Known limitations.
+- Remaining production deployment tasks.
+
+---
+
+## 16. Engineering Rules
+
+Follow these rules throughout implementation:
+
+1. Do not replace the existing UI without inspecting it.
+2. Do not generate the entire application as one enormous file.
+3. Do not put database access and business logic directly inside Express route handlers.
+4. Do not create redundant abstraction layers without a practical reason.
+5. Do not use hardcoded mock API responses as production functionality.
+6. Do not leave nonfunctional buttons, links, forms, or navigation items.
+7. Do not expose secrets or private user information.
+8. Do not trust client-provided user IDs, roles, prices, listing ownership, or permissions.
+9. Do not implement payment processing.
+10. Do not mark a listing sold without an authorized seller confirmation or explicitly authorized administrative action.
+11. Do not skip tests simply because the application appears to work.
+12. Do not silently ignore errors or incomplete integrations.
+13. Do not change the agreed technology stack without explaining a genuine technical necessity.
+14. Do not mark incomplete features as complete.
+15. Do not leave important requirements undocumented.
+16. Prefer clear, maintainable code over unnecessary complexity.
+17. Update documentation and diagrams whenever important architecture changes occur.
+18. Preserve working code and inspect existing files before destructive changes.
+19. Do not stop after producing an implementation plan or diagrams; continue through implementation, testing, and documentation.
+20. Report actual progress, test results, and remaining blockers honestly.
+
+## 17. Final Acceptance Criteria
+
+The project is ready for final review only when:
+
+- The supplied UI has been inspected and integrated.
+- The React frontend and Express backend run independently.
+- MongoDB is connected and schemas are validated.
+- Authentication and authorization work.
+- Users can create, edit, publish, search, and manage phone listings.
+- Favorites, inquiries, and messaging work according to the implemented scope.
+- Seller-confirmed sale status works correctly.
+- Payments remain entirely outside MobileMart.
+- Administrative moderation is protected by server-side permissions.
+- UML, class, component, sequence, and database diagrams are available.
+- API documentation is available.
+- Automated tests have been executed and results documented.
+- The production frontend build succeeds.
+- Security-sensitive configuration is externalized.
+- Setup, deployment, and troubleshooting instructions are complete.
+- Known limitations and unconfigured integrations are explicitly documented.
+
+**Begin now with Phase 1: inspect my repository and the existing `UI/` folder. Then proceed through the phases in order, implementing and testing the real application rather than stopping at planning or generating a static prototype.**

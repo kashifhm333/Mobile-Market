@@ -1,0 +1,24 @@
+sequenceDiagram
+    autonumber
+    actor User as Client / Browser
+    participant API as Express Router & RateLimiter
+    participant Ctrl as AuthController
+    participant Svc as AuthService
+    participant Model as UserModel (MongoDB)
+
+    User->>API: POST /api/v1/auth/login { email, password }
+    API->>API: Rate Limiter Check (<= 10 attempts/15m)
+    API->>Ctrl: handleLogin(req, res)
+    Ctrl->>Svc: authenticate(email, password)
+    Svc->>Model: findOne({ email }).select('+passwordHash')
+    Model-->>Svc: user record or null
+    
+    alt User not found or invalid password
+        Svc-->>Ctrl: throw UnauthorizedError("Invalid email or password")
+        Ctrl-->>User: 401 Unauthorized { success: false, error: ... }
+    else Valid credentials
+        Svc->>Svc: bcrypt.compare(password, passwordHash)
+        Svc->>Svc: generateJwtToken(user)
+        Svc-->>Ctrl: { userProfile, token }
+        Ctrl->>User: Set-Cookie: token=JWT; HttpOnly; SameSite=Lax; Secure<br/>200 OK { success: true, data: userProfile }
+    end

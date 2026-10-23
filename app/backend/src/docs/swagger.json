@@ -1,0 +1,85 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "MobileMart API",
+    "version": "1.0.0",
+    "description": "Production-grade RESTful API for MobileMart mobile marketplace"
+  },
+  "servers": [
+    {
+      "url": "/api/v1",
+      "description": "API Version 1"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "token"
+      },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "summary": "Register a new user account",
+        "tags": ["Auth"]
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Login with email and password",
+        "tags": ["Auth"]
+      }
+    },
+    "/auth/me": {
+      "get": {
+        "summary": "Get authenticated user profile",
+        "tags": ["Auth"],
+        "security": [{ "bearerAuth": [] }, { "cookieAuth": [] }]
+      }
+    },
+    "/listings": {
+      "get": {
+        "summary": "Search and filter phone listings",
+        "tags": ["Listings"]
+      },
+      "post": {
+        "summary": "Create a new phone listing",
+        "tags": ["Listings"],
+        "security": [{ "bearerAuth": [] }, { "cookieAuth": [] }]
+      }
+    },
+    "/listings/{id}": {
+      "get": {
+        "summary": "Get listing details by ID",
+        "tags": ["Listings"]
+      }
+    },
+    "/conversations": {
+      "get": {
+        "summary": "List user conversations",
+        "tags": ["Conversations"],
+        "security": [{ "bearerAuth": [] }]
+      },
+      "post": {
+        "summary": "Start an inquiry or offer",
+        "tags": ["Conversations"],
+        "security": [{ "bearerAuth": [] }]
+      }
+    },
+    "/admin/stats": {
+      "get": {
+        "summary": "Get admin dashboard statistics",
+        "tags": ["Admin"],
+        "security": [{ "bearerAuth": [] }]
+      }
+    }
+  }
+}

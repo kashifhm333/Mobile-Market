@@ -1,0 +1,71 @@
+graph TD
+    Client[React Client] -->|HTTP / JSON| ExpressApp[Express App]
+
+    subgraph Middleware Pipeline
+        Helmet[Helmet Security Headers]
+        Cors[CORS Middleware]
+        Limiter[Rate Limiter]
+        BodyParsers[JSON & URL-Encoded Parsers]
+        AuthMw[Auth Middleware - JWT Verify]
+        RoleMw[Role Middleware - Admin Check]
+        ValidatorMw[Express Validator]
+        ErrMw[Global Error Handler]
+    end
+
+    ExpressApp --> Helmet
+    Helmet --> Cors
+    Cors --> Limiter
+    Limiter --> BodyParsers
+
+    subgraph Route Handlers
+        AuthRoutes[/api/v1/auth]
+        ListingRoutes[/api/v1/listings]
+        FavRoutes[/api/v1/favorites]
+        ConvRoutes[/api/v1/conversations]
+        ReportRoutes[/api/v1/reports]
+        AdminRoutes[/api/v1/admin]
+    end
+
+    BodyParsers --> AuthRoutes
+    BodyParsers --> ListingRoutes
+    BodyParsers --> FavRoutes
+    BodyParsers --> ConvRoutes
+    BodyParsers --> ReportRoutes
+    BodyParsers --> AdminRoutes
+
+    subgraph Controllers
+        AuthCtrl[AuthController]
+        ListingCtrl[ListingController]
+        FavCtrl[FavoriteController]
+        ConvCtrl[ConversationController]
+        ReportCtrl[ReportController]
+        AdminCtrl[AdminController]
+    end
+
+    subgraph Services Domain Logic
+        AuthSvc[AuthService]
+        ListingSvc[ListingService]
+        FavSvc[FavoriteService]
+        ConvSvc[ConversationService]
+        AdminSvc[AdminService]
+        AuditSvc[AuditService]
+    end
+
+    subgraph Mongoose Models
+        UserModel[(User)]
+        ListingModel[(Listing)]
+        FavModel[(Favorite)]
+        ConvModel[(Conversation)]
+        MsgModel[(Message)]
+        ReportModel[(Report)]
+        AuditModel[(AuditLog)]
+    end
+
+    ListingRoutes --> ListingCtrl --> ListingSvc --> ListingModel
+    AuthRoutes --> AuthCtrl --> AuthSvc --> UserModel
+    FavRoutes --> FavCtrl --> FavSvc --> FavModel
+    ConvRoutes --> ConvCtrl --> ConvSvc --> ConvModel & MsgModel
+    ReportRoutes --> ReportCtrl --> AdminSvc --> ReportModel
+    AdminRoutes --> AdminCtrl --> AdminSvc --> ListingModel & UserModel & ReportModel & AuditModel
+
+    ListingSvc & AdminSvc -.-> AuditSvc

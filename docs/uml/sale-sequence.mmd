@@ -1,0 +1,20 @@
+sequenceDiagram
+    autonumber
+    actor Buyer as Buyer
+    actor Seller as Seller
+    participant MobileMart as MobileMart System (API & DB)
+    participant PhysicalWorld as External World (Physical Meetup / Direct Payment)
+
+    Buyer->>Seller: Agree on sale details via MobileMart Messaging
+    Seller->>MobileMart: PATCH /api/v1/listings/:id/status { status: "RESERVED", reservedFor: buyerId }
+    MobileMart-->>Seller: 200 OK (Listing marked RESERVED; hidden from new search inquiries)
+
+    Note over Buyer, PhysicalWorld: DIRECT EXTERNAL SETTLEMENT (OUTSIDE MOBILEMART)<br/>MobileMart does NOT touch money, verify payments, or hold escrow.
+    Buyer->>PhysicalWorld: Physical Meetup / Device Handover
+    Buyer->>PhysicalWorld: Inspect device hardware & condition
+    Buyer->>Seller: Direct Cash / External Bank Transfer settlement
+
+    Seller->>MobileMart: PATCH /api/v1/listings/:id/status { status: "SOLD" }
+    MobileMart->>MobileMart: Verify seller ownership & valid transition (ACTIVE/RESERVED -> SOLD)
+    MobileMart->>MobileMart: Atomic update { status: "SOLD", updatedAt: now }
+    MobileMart-->>Seller: 200 OK (Listing permanently marked as SOLD)

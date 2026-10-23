@@ -1,0 +1,27 @@
+sequenceDiagram
+    autonumber
+    actor Buyer as Buyer
+    actor Seller as Seller
+    participant API as Express Router & Auth
+    participant Ctrl as ConversationController
+    participant Svc as ConversationService
+    participant DB as MongoDB (Conversation & Message)
+
+    Buyer->>API: POST /api/v1/conversations { listingId, message, proposedPrice }
+    API->>API: Verify Auth & Self-Inquiry Check (buyerId !== sellerId)
+    API->>Ctrl: startInquiry(req, res)
+    Ctrl->>Svc: createOrGetConversation(listingId, buyerId, message, proposedPrice)
+    Svc->>DB: Conversation.findOneAndUpdate(upsert)
+    DB-->>Svc: conversation
+    Svc->>DB: Message.create({ conversationId, senderId: buyerId, body: message })
+    DB-->>Svc: savedMessage
+    Svc-->>Ctrl: { conversation, message }
+    Ctrl-->>Buyer: 201 Created { success: true, data: conversation }
+
+    Seller->>API: GET /api/v1/conversations/:id
+    API->>Ctrl: getConversation(req, res)
+    Ctrl->>Svc: getConversationDetails(conversationId, sellerId)
+    Svc->>DB: Conversation.findById(id)
+    Svc->>DB: Message.find({ conversationId }).sort({ createdAt: 1 })
+    Svc-->>Ctrl: conversationWithMessages
+    Ctrl-->>Seller: 200 OK { success: true, data: conversationWithMessages }

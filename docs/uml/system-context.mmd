@@ -1,0 +1,28 @@
+graph TD
+    subgraph External Users
+        Guest["Guest Visitor"]
+        User["Registered User (Buyer / Seller)"]
+        Admin["Administrator"]
+    end
+
+    subgraph MobileMart Platform
+        Frontend["React SPA (Vite + Tailwind)<br/>Port: 5173"]
+        API["Express.js REST API<br/>Port: 5000"]
+        DB[(MongoDB<br/>Port: 27017)]
+        MediaStorage["Local / Object Image Storage"]
+    end
+
+    subgraph External Realm [Outside MobileMart Platform]
+        P2PPayment["Direct Payment Settlement<br/>(Cash / Direct Bank Transfer / External App)<br/>*MobileMart Never Touches Money*"]
+    end
+
+    Guest -->|Browse & Search Listings| Frontend
+    User -->|Manage Listings, Inquiries, Favorites| Frontend
+    Admin -->|Moderation, User Oversight, Audits| Frontend
+
+    Frontend -->|HTTPS REST API / JSON & Multipart| API
+    API -->|Mongoose Queries| DB
+    API -->|Store & Fetch Images| MediaStorage
+
+    User -.->|Physical Meetup / Negotiation| P2PPayment
+    P2PPayment -.->|Direct Buyer-to-Seller Settlement| User

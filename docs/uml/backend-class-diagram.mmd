@@ -1,0 +1,95 @@
+classDiagram
+    class User {
+        +ObjectId _id
+        +String name
+        +String email
+        +String passwordHash
+        +String role
+        +String status
+        +String phone
+        +String city
+        +String avatarUrl
+        +Date createdAt
+        +comparePassword(candidatePassword)
+    }
+
+    class Listing {
+        +ObjectId _id
+        +ObjectId sellerId
+        +String title
+        +String brand
+        +String model
+        +String variant
+        +String condition
+        +Number price
+        +String currency
+        +Boolean negotiable
+        +String description
+        +Array~String~ images
+        +String city
+        +Object specifications
+        +String status
+        +ObjectId reservedFor
+        +Date createdAt
+    }
+
+    class Favorite {
+        +ObjectId _id
+        +ObjectId userId
+        +ObjectId listingId
+        +Date createdAt
+    }
+
+    class Conversation {
+        +ObjectId _id
+        +ObjectId listingId
+        +ObjectId buyerId
+        +ObjectId sellerId
+        +String status
+        +Number proposedPrice
+        +String lastMessage
+        +Date lastMessageAt
+        +Date createdAt
+    }
+
+    class Message {
+        +ObjectId _id
+        +ObjectId conversationId
+        +ObjectId senderId
+        +String body
+        +Date readAt
+        +Date createdAt
+    }
+
+    class Report {
+        +ObjectId _id
+        +ObjectId reporterId
+        +String targetType
+        +ObjectId targetId
+        +String reason
+        +String description
+        +String status
+        +ObjectId reviewedBy
+        +String resolutionNote
+        +Date createdAt
+    }
+
+    class AuditLog {
+        +ObjectId _id
+        +ObjectId actorId
+        +String action
+        +String targetType
+        +String targetId
+        +Object metadata
+        +Date createdAt
+    }
+
+    User "1" -- "0..*" Listing : creates
+    User "1" -- "0..*" Favorite : saves
+    Listing "1" -- "0..*" Favorite : is_saved_in
+    User "1" -- "0..*" Conversation : participates_as_buyer
+    User "1" -- "0..*" Conversation : participates_as_seller
+    Listing "1" -- "0..*" Conversation : belongs_to
+    Conversation "1" -- "0..*" Message : contains
+    User "1" -- "0..*" Report : submits
+    User "1" -- "0..*" AuditLog : acts_as

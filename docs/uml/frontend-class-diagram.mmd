@@ -1,0 +1,66 @@
+classDiagram
+    class AuthContext {
+        +User user
+        +boolean isAuthenticated
+        +boolean isLoading
+        +login(credentials)
+        +register(userData)
+        +logout()
+        +updateProfile(data)
+    }
+
+    class FavoritesContext {
+        +Set favoriteIds
+        +toggleFavorite(listingId)
+        +isFavorite(listingId)
+        +fetchFavorites()
+    }
+
+    class ToastContext {
+        +showToast(message, type)
+        +removeToast(id)
+    }
+
+    class ApiService {
+        +axiosInstance
+        +get(url, config)
+        +post(url, data, config)
+        +put(url, data, config)
+        +patch(url, data, config)
+        +delete(url, config)
+    }
+
+    class ListingService {
+        +getListings(params)
+        +getListingById(id)
+        +getMyListings()
+        +createListing(data)
+        +updateListing(id, data)
+        +updateStatus(id, status)
+        +uploadImages(id, formData)
+    }
+
+    class ConversationService {
+        +getConversations()
+        +getConversationById(id)
+        +createInquiry(data)
+        +sendMessage(conversationId, body)
+        +updateDealStatus(conversationId, status)
+    }
+
+    class AdminService {
+        +getStats()
+        +getUsers(params)
+        +updateUserStatus(id, status)
+        +getListings(params)
+        +moderateListing(id, action, reason)
+        +getReports(params)
+        +updateReport(id, data)
+        +getAuditLogs(params)
+    }
+
+    ListingService --> ApiService
+    ConversationService --> ApiService
+    AdminService --> ApiService
+    AuthContext --> ApiService
+    FavoritesContext --> ApiService

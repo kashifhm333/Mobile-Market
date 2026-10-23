@@ -1,0 +1,32 @@
+sequenceDiagram
+    autonumber
+    actor User as Reporting User
+    actor Admin as Marketplace Administrator
+    participant API as Express Router
+    participant ReportCtrl as ReportController
+    participant AdminCtrl as AdminController
+    participant AdminSvc as AdminService
+    participant DB as MongoDB (Report, Listing, AuditLog)
+
+    User->>API: POST /api/v1/reports { targetType: "LISTING", targetId, reason: "FRAUD", description }
+    API->>ReportCtrl: createReport(req, res)
+    ReportCtrl->>DB: Report.create({ reporterId, targetType, targetId, reason, description })
+    DB-->>ReportCtrl: reportDocument
+    ReportCtrl-->>User: 201 Created { success: true, message: "Report received" }
+
+    Admin->>API: GET /api/v1/admin/reports?status=PENDING
+    API->>AdminCtrl: getReports(req, res)
+    AdminCtrl->>AdminSvc: fetchPendingReports()
+    AdminSvc->>DB: Report.find({ status: 'PENDING' }).populate('targetId')
+    DB-->>AdminSvc: pendingReports
+    AdminSvc-->>AdminCtrl: pendingReports
+    AdminCtrl-->>Admin: 200 OK [ pendingReports ]
+
+    Admin->>API: PATCH /api/v1/admin/listings/:id/moderate { action: "REJECT", reason: "Counterfeit serial number" }
+    API->>AdminCtrl: moderateListing(req, res)
+    AdminCtrl->>AdminSvc: moderateListing(adminId, listingId, action, reason)
+    AdminSvc->>DB: Listing.findByIdAndUpdate(listingId, { status: "REJECTED", rejectionReason: reason })
+    AdminSvc->>DB: AuditLog.create({ actorId: adminId, action: "LISTING_REJECTED", targetId: listingId, metadata: { reason } })
+    AdminSvc->>DB: Report.updateMany({ targetId: listingId }, { status: "RESOLVED", resolutionNote: reason })
+    AdminSvc-->>AdminCtrl: { success: true }
+    AdminCtrl-->>Admin: 200 OK { success: true, message: "Listing rejected and audit log recorded" }
