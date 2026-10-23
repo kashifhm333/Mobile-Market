@@ -1,6 +1,8 @@
 # MobileMart — Production-Grade Full-Stack Mobile Phone Marketplace
 
-MobileMart is a complete, production-ready web application and online marketplace for buying and selling new, certified pre-owned, and used mobile phones. Built using React, Vite, Tailwind CSS, Node.js, Express, and MongoDB.
+MobileMart is a full-stack marketplace for buying and selling new, certified pre-owned, and used mobile phones.
+It is built with React, Vite, Tailwind CSS, Node.js, Express, and MongoDB, with a focus on secure listings and buyer-seller communication.
+Future improvements will include Kubernetes deployment, GitHub Actions CI/CD, and Terraform-based infrastructure automation.
 
 ---
 

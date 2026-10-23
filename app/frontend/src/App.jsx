@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext.jsx';
 import { ToastProvider } from './context/ToastContext.jsx';
 import { FavoritesProvider } from './context/FavoritesContext.jsx';
+import { ThemeProvider } from './context/ThemeContext.jsx';
 
 import PublicLayout from './layouts/PublicLayout.jsx';
 import { ProtectedRoute, AdminRoute } from './routes/ProtectedRoute.jsx';
@@ -28,10 +29,11 @@ import NotFoundPage from './pages/NotFoundPage.jsx';
 function App() {
   return (
     <BrowserRouter>
-      <ToastProvider>
-        <AuthProvider>
-          <FavoritesProvider>
-            <Routes>
+      <ThemeProvider>
+        <ToastProvider>
+          <AuthProvider>
+            <FavoritesProvider>
+              <Routes>
               <Route element={<PublicLayout />}>
                 {/* Public Discovery Routes */}
                 <Route path="/" element={<HomePage />} />
@@ -112,8 +114,9 @@ function App() {
           </FavoritesProvider>
         </AuthProvider>
       </ToastProvider>
-    </BrowserRouter>
-  );
+    </ThemeProvider>
+  </BrowserRouter>
+);
 }
 
 export default App;

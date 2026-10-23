@@ -15,13 +15,13 @@ const SafetyGuidelinesPage = () => {
       </div>
 
       {/* Golden Rule Card */}
-      <div className="bg-amber-50 border-2 border-amber-300 rounded-3xl p-6 sm:p-8 space-y-3 shadow-sm">
-        <div className="flex items-center gap-3 text-amber-900">
-          <span className="material-symbols-outlined text-3xl text-amber-700">warning</span>
+      <div className="bg-amber-50 dark:bg-slate-800/80 border-2 border-amber-300 dark:border-amber-500/40 rounded-3xl p-6 sm:p-8 space-y-3 shadow-sm">
+        <div className="flex items-center gap-3 text-amber-900 dark:text-amber-300">
+          <span className="material-symbols-outlined text-3xl text-amber-700 dark:text-amber-400">warning</span>
           <h2 className="font-black text-lg">The Golden Rule: Never Transfer Money in Advance</h2>
         </div>
-        <p className="text-xs sm:text-sm text-amber-950 leading-relaxed">
-          <strong>MobileMart NEVER collects payments, guarantees wire transfers, holds escrow, or sends payment verification emails.</strong>{' '}
+        <p className="text-xs sm:text-sm text-amber-950 dark:text-slate-200 leading-relaxed">
+          <strong className="dark:text-amber-300">MobileMart NEVER collects payments, guarantees wire transfers, holds escrow, or sends payment verification emails.</strong>{' '}
           Anyone claiming that MobileMart is holding their funds or requiring you to pay online before an in-person inspection is attempting fraud. Report such accounts immediately.
         </p>
       </div>

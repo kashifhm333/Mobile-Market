@@ -3,12 +3,132 @@
 @tailwind utilities;
 
 @layer base {
+  /* Default Light Theme Variables */
+  :root {
+    --color-primary: 0 74 198;
+    --color-primary-container: 37 99 235;
+    --color-primary-fixed: 219 225 255;
+    --color-primary-fixed-dim: 180 197 255;
+    --color-on-primary: 255 255 255;
+    --color-on-primary-container: 238 239 255;
+    --color-on-primary-fixed: 0 23 75;
+    --color-on-primary-fixed-variant: 0 62 168;
+    --color-inverse-primary: 180 197 255;
+
+    --color-secondary: 0 108 73;
+    --color-secondary-container: 108 248 187;
+    --color-secondary-fixed: 111 251 190;
+    --color-secondary-fixed-dim: 78 222 163;
+    --color-on-secondary: 255 255 255;
+    --color-on-secondary-container: 0 113 77;
+    --color-on-secondary-fixed: 0 33 19;
+    --color-on-secondary-fixed-variant: 0 82 54;
+
+    --color-tertiary: 120 75 0;
+    --color-tertiary-container: 153 97 0;
+    --color-tertiary-fixed: 255 221 184;
+    --color-tertiary-fixed-dim: 255 185 95;
+    --color-on-tertiary: 255 255 255;
+    --color-on-tertiary-container: 255 238 221;
+    --color-on-tertiary-fixed: 42 23 0;
+    --color-on-tertiary-fixed-variant: 101 62 0;
+
+    --color-error: 186 26 26;
+    --color-error-container: 255 218 214;
+    --color-on-error: 255 255 255;
+    --color-on-error-container: 147 0 10;
+
+    --color-background: 250 248 255;
+    --color-on-background: 19 27 46;
+    --color-surface: 250 248 255;
+    --color-on-surface: 19 27 46;
+    --color-surface-dim: 210 217 244;
+    --color-surface-bright: 250 248 255;
+    --color-surface-container-lowest: 255 255 255;
+    --color-surface-container-low: 242 243 255;
+    --color-surface-container: 234 237 255;
+    --color-surface-container-high: 226 231 255;
+    --color-surface-container-highest: 218 226 253;
+    --color-surface-variant: 218 226 253;
+    --color-on-surface-variant: 67 70 85;
+    --color-inverse-surface: 40 48 68;
+    --color-inverse-on-surface: 238 240 255;
+    --color-surface-tint: 0 83 219;
+
+    --color-outline: 115 118 134;
+    --color-outline-variant: 195 198 215;
+  }
+
+  /* Specification 1: Deep Slate & Tech Cyan (Modern SaaS & Cloud Tools)
+     Base Background: Deep Slate #0F172A
+     Surface Base: Slate Dark #1E293B
+     Primary Accent: Electric Cyan #06B6D4
+     Secondary Accent: Indigo Purple #6366F1
+     Text Primary: Off-White Slate #F8FAFC
+     Text Muted: Cool Gray #94A3B8
+  */
+  .dark {
+    --color-primary: 6 182 212;             /* Electric Cyan #06B6D4 */
+    --color-primary-container: 8 145 178;   /* Cyan 600 #0891B2 */
+    --color-primary-fixed: 22 78 99;        /* Cyan 900 #164E63 */
+    --color-primary-fixed-dim: 14 116 144;  /* Cyan 700 #0E7490 */
+    --color-on-primary: 15 23 42;           /* Deep Slate #0F172A for ultra-high contrast on cyan CTAs */
+    --color-on-primary-container: 207 250 254; /* Cyan 100 #CFFAFE */
+    --color-on-primary-fixed: 207 250 254;
+    --color-on-primary-fixed-variant: 103 232 249;
+    --color-inverse-primary: 0 74 198;
+
+    --color-secondary: 99 102 241;          /* Indigo Purple #6366F1 */
+    --color-secondary-container: 67 56 202; /* Indigo 700 #4338CA */
+    --color-secondary-fixed: 49 46 129;     /* Indigo 900 #312E81 */
+    --color-secondary-fixed-dim: 55 48 163;
+    --color-on-secondary: 255 255 255;
+    --color-on-secondary-container: 224 231 255;
+    --color-on-secondary-fixed: 224 231 255;
+    --color-on-secondary-fixed-variant: 165 180 252;
+
+    --color-tertiary: 245 158 11;           /* Amber 500 */
+    --color-tertiary-container: 180 83 9;
+    --color-tertiary-fixed: 69 26 3;
+    --color-tertiary-fixed-dim: 120 53 15;
+    --color-on-tertiary: 15 23 42;
+    --color-on-tertiary-container: 254 243 199;
+    --color-on-tertiary-fixed: 254 243 199;
+    --color-on-tertiary-fixed-variant: 252 211 77;
+
+    --color-error: 248 113 113;             /* Red 400 */
+    --color-error-container: 127 29 29;     /* Red 900 */
+    --color-on-error: 15 23 42;
+    --color-on-error-container: 254 202 202;
+
+    --color-background: 15 23 42;           /* Deep Slate #0F172A Base Background */
+    --color-on-background: 248 250 252;     /* Off-White Slate #F8FAFC Text Primary */
+    --color-surface: 15 23 42;              /* Deep Slate #0F172A */
+    --color-on-surface: 248 250 252;        /* Off-White Slate #F8FAFC */
+    --color-surface-dim: 11 17 32;          /* #0B1120 Deepest background */
+    --color-surface-bright: 30 41 59;       /* Slate Dark #1E293B */
+    --color-surface-container-lowest: 30 41 59; /* Slate Dark #1E293B Surface Base (cards, modals, dropdowns) */
+    --color-surface-container-low: 22 32 50;    /* #162032 Sub-cards & input backgrounds */
+    --color-surface-container: 51 65 85;        /* #334155 Slate 700 Borders and dividers */
+    --color-surface-container-high: 40 53 72;   /* #283548 */
+    --color-surface-container-highest: 71 85 105; /* #475569 Slate 600 */
+    --color-surface-variant: 37 51 70;         /* #253346 */
+    --color-on-surface-variant: 148 163 184;   /* Cool Gray #94A3B8 Text Muted */
+    --color-inverse-surface: 248 250 252;
+    --color-inverse-on-surface: 15 23 42;
+    --color-surface-tint: 6 182 212;           /* Electric Cyan #06B6D4 */
+
+    --color-outline: 100 116 139;           /* Slate 500 #64748B */
+    --color-outline-variant: 51 65 85;       /* Slate 700 #334155 */
+  }
+
   html, body {
     margin: 0;
     padding: 0;
-    background-color: #faf8ff;
-    color: #131b2e;
+    background-color: rgb(var(--color-background));
+    color: rgb(var(--color-on-surface));
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
@@ -33,4 +153,20 @@
 /* Custom smooth transitions */
 .transition-smooth {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode scrollbars */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
 }

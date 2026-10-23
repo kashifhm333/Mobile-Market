@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { useFavorites } from '../../context/FavoritesContext.jsx';
+import { useTheme } from '../../context/ThemeContext.jsx';
 
 const Navbar = () => {
   const { user, isAuthenticated, isAdmin, logout } = useAuth();
   const { favoriteIds } = useFavorites();
+  const { theme, isDark, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -240,6 +242,26 @@ const Navbar = () => {
             </div>
           )}
 
+          {/* Theme Toggle Button (Light / Deep Slate & Tech Cyan) */}
+          <button
+            type="button"
+            onClick={toggleTheme}
+            id="theme-toggle-btn"
+            className="p-2 rounded-xl text-on-surface hover:bg-surface-container-low transition-colors border border-transparent hover:border-surface-container focus:outline-none focus:ring-2 focus:ring-primary/50 flex items-center justify-center group"
+            aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme (Deep Slate & Tech Cyan)'}
+            title={isDark ? 'Switch to light theme' : 'Switch to dark theme (Deep Slate & Tech Cyan)'}
+          >
+            <span
+              className={`material-symbols-outlined text-xl transition-all duration-300 ${
+                isDark
+                  ? 'text-primary group-hover:rotate-45'
+                  : 'text-on-surface-variant group-hover:-rotate-12'
+              }`}
+            >
+              {isDark ? 'light_mode' : 'dark_mode'}
+            </span>
+          </button>
+
           {/* Mobile menu toggle */}
           <button
             type="button"
@@ -310,6 +332,24 @@ const Navbar = () => {
               + Sell a Phone
             </Link>
           )}
+
+          {/* Theme Switcher in Mobile Drawer */}
+          <div className="pt-2 border-t border-surface-container flex items-center justify-between">
+            <span className="text-xs text-on-surface-variant font-medium flex items-center gap-1.5">
+              <span className="material-symbols-outlined text-base text-primary">palette</span>
+              Theme
+            </span>
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-surface-container-low border border-surface-container text-xs font-bold text-on-surface hover:bg-surface-container transition-colors"
+            >
+              <span className="material-symbols-outlined text-sm text-primary">
+                {isDark ? 'light_mode' : 'dark_mode'}
+              </span>
+              <span>{isDark ? 'Light' : 'Deep Slate'}</span>
+            </button>
+          </div>
         </div>
       )}
     </header>

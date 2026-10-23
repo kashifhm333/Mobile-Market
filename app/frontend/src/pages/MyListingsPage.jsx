@@ -42,7 +42,7 @@ const MyListingsPage = () => {
       case 'ACTIVE':
         return <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-secondary-container text-on-secondary-container">ACTIVE</span>;
       case 'RESERVED':
-        return <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-amber-200 text-amber-900">RESERVED</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-amber-200 dark:bg-amber-950/70 text-amber-900 dark:text-amber-200">RESERVED</span>;
       case 'SOLD':
         return <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-surface-container-high text-on-surface">SOLD</span>;
       case 'DRAFT':
@@ -156,7 +156,7 @@ const MyListingsPage = () => {
                   <button
                     type="button"
                     onClick={() => handleUpdateStatus(l._id, 'RESERVED')}
-                    className="px-3 py-1.5 rounded-xl bg-amber-100 text-amber-900 border border-amber-300 text-xs font-bold hover:bg-amber-200 transition-colors"
+                    className="px-3 py-1.5 rounded-xl bg-amber-100 dark:bg-amber-950/40 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-700/50 text-xs font-bold hover:bg-amber-200 dark:hover:bg-amber-900/60 transition-colors"
                   >
                     Mark Reserved
                   </button>

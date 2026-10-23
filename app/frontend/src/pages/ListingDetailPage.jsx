@@ -141,8 +141,8 @@ const ListingDetailPage = () => {
 
       {/* Reserved or Sold Alert */}
       {listing.status === 'RESERVED' && (
-        <div className="bg-amber-100 border border-amber-300 text-amber-900 rounded-2xl p-4 flex items-center gap-3">
-          <span className="material-symbols-outlined text-2xl text-amber-700">lock_clock</span>
+        <div className="bg-amber-100 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-700/50 text-amber-900 dark:text-amber-200 rounded-2xl p-4 flex items-center gap-3">
+          <span className="material-symbols-outlined text-2xl text-amber-700 dark:text-amber-400">lock_clock</span>
           <p className="text-xs font-bold">
             This phone is currently RESERVED for an agreed buyer. Inquiries may be paused.
           </p>
@@ -405,8 +405,8 @@ const ListingDetailPage = () => {
                 />
               </div>
 
-              <div className="bg-amber-50 p-3 rounded-xl border border-amber-200 text-[11px] text-amber-900">
-                <strong>Safety Reminder:</strong> Agree to inspect the phone before transferring any cash. MobileMart does not hold funds.
+              <div className="bg-amber-50 dark:bg-slate-800 p-3 rounded-xl border border-amber-200 dark:border-amber-700/50 text-[11px] text-amber-900 dark:text-amber-200">
+                <strong className="dark:text-amber-100">Safety Reminder:</strong> Agree to inspect the phone before transferring any cash. MobileMart does not hold funds.
               </div>
 
               <div className="flex items-center justify-end gap-3 pt-2">

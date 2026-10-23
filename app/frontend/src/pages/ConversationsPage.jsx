@@ -206,9 +206,9 @@ const ConversationsPage = () => {
               </div>
 
               {/* Safety notice strip inside chat */}
-              <div className="bg-amber-50 px-4 py-2 border-b border-amber-200/80 text-[11px] text-amber-900 flex items-center justify-between">
+              <div className="bg-amber-50 dark:bg-slate-800 border-b border-amber-200/80 dark:border-slate-700 text-[11px] text-amber-900 dark:text-amber-200 flex items-center justify-between">
                 <span>
-                  <strong>Safety reminder:</strong> Settle payment directly in person after hardware inspection. MobileMart does not hold funds.
+                  <strong className="dark:text-amber-100">Safety reminder:</strong> Settle payment directly in person after hardware inspection. MobileMart does not hold funds.
                 </span>
                 <Link to="/safety-guidelines" className="text-primary font-bold hover:underline">
                   Guidelines

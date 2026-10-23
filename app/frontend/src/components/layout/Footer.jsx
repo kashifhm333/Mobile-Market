@@ -7,7 +7,7 @@ const Footer = () => {
       {/* Top Banner Warning */}
       <div className="bg-surface-container-high py-3 px-4 border-b border-surface-container text-center">
         <p className="max-w-4xl mx-auto text-xs text-on-surface">
-          <span className="font-bold text-amber-800">⚠️ Marketplace Safety Policy:</span>{' '}
+          <span className="font-bold text-amber-800 dark:text-amber-400">⚠️ Marketplace Safety Policy:</span>{' '}
           MobileMart never collects payments, requests wire transfers, or provides escrow services. All transactions must be inspected and concluded directly between buyer and seller in safe public locations.
         </p>
       </div>
