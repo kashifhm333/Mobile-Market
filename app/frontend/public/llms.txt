@@ -1,0 +1,9 @@
+# MobileMart Verified Smartphone Exchange
+
+> MobileMart is a peer-to-peer marketplace for verified smartphones, factory sealed devices, and certified pre-owned hardware.
+
+## Overview
+- **Platform Type**: Peer-to-peer smartphone exchange.
+- **Settlement Model**: Direct buyer-seller settlement in-person at safe public locations upon hardware inspection.
+- **Verification**: 90-point diagnostic standards, clean IMEI verification, transparent battery health reporting.
+- **Key Categories**: Factory Sealed New, Certified Pre-Owned (Pristine, Excellent, Good).

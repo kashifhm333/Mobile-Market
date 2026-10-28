@@ -19,9 +19,9 @@ Future improvements will include Kubernetes deployment, GitHub Actions CI/CD, an
 
 ### Frontend (`app/frontend`)
 - **Core:** React 18 with Vite
-- **Styling:** Tailwind CSS configured with the Material Design 3 tokens from Google Stitch prototypes
+- **Styling:** Tailwind CSS with the authoritative MobileMart dual-theme palette (`data-theme="light"` / `data-theme="dark"`) and WCAG AA semantic tokens
 - **Typography:** Plus Jakarta Sans & Inter
-- **Icons:** Google Material Symbols Outlined
+- **Icons:** Lucide React icons (no emojis, Material Symbols removed)
 - **Routing:** React Router DOM (v6) with `ProtectedRoute` and `AdminRoute`
 - **HTTP Client:** Axios with credentials and interceptors
 - **State Management:** Context API (`AuthContext`, `ToastContext`, `FavoritesContext`)

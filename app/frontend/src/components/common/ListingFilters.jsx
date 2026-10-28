@@ -1,4 +1,5 @@
 import React from 'react';
+import { SlidersHorizontal } from 'lucide-react';
 
 const BRANDS = ['Apple', 'Samsung', 'Google', 'OnePlus', 'Xiaomi', 'Motorola', 'Other'];
 const CONDITIONS = [
@@ -15,15 +16,15 @@ const ListingFilters = ({ filters, onFilterChange, onReset }) => {
   };
 
   return (
-    <div className="bg-surface-container-lowest p-5 rounded-2xl border border-surface-container shadow-sm space-y-6 text-xs text-on-surface">
+    <div className="bg-surface p-5 rounded-2xl border border-surface-container shadow-sm space-y-6 text-xs text-on-surface">
       <div className="flex items-center justify-between pb-3 border-b border-surface-container">
-        <h3 className="font-bold text-sm text-on-surface flex items-center gap-1.5">
-          <span className="material-symbols-outlined text-primary text-base">tune</span> Filters
+        <h3 className="font-bold text-sm text-on-surface flex items-center gap-2">
+          <SlidersHorizontal className="w-4 h-4 text-secondary" /> Filters
         </h3>
         <button
           type="button"
           onClick={onReset}
-          className="text-primary font-semibold hover:underline text-xs"
+          className="text-secondary font-semibold hover:underline text-xs"
         >
           Reset All
         </button>
@@ -31,17 +32,17 @@ const ListingFilters = ({ filters, onFilterChange, onReset }) => {
 
       {/* Brand Selection */}
       <div>
-        <label className="font-bold text-xs uppercase tracking-wider text-outline block mb-2">
+        <label className="font-bold text-xs uppercase tracking-wider text-on-surface-variant block mb-2">
           Manufacturer Brand
         </label>
         <div className="flex flex-wrap gap-1.5">
           <button
             type="button"
             onClick={() => handleChange('brand', '')}
-            className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${
+            className={`px-3 py-1.5 rounded-lg font-medium transition-colors border ${
               !filters.brand
-                ? 'bg-primary text-on-primary font-bold'
-                : 'bg-surface-container-low text-on-surface hover:bg-surface-container'
+                ? 'bg-accent text-white font-bold border-accent'
+                : 'bg-surface-container-low text-on-surface hover:bg-surface-container border-surface-container'
             }`}
           >
             All
@@ -51,10 +52,10 @@ const ListingFilters = ({ filters, onFilterChange, onReset }) => {
               key={b}
               type="button"
               onClick={() => handleChange('brand', b === filters.brand ? '' : b)}
-              className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${
+              className={`px-3 py-1.5 rounded-lg font-medium transition-colors border ${
                 filters.brand === b
-                  ? 'bg-primary text-on-primary font-bold'
-                  : 'bg-surface-container-low text-on-surface hover:bg-surface-container'
+                  ? 'bg-accent text-white font-bold border-accent'
+                  : 'bg-surface-container-low text-on-surface hover:bg-surface-container border-surface-container'
               }`}
             >
               {b}
@@ -65,7 +66,7 @@ const ListingFilters = ({ filters, onFilterChange, onReset }) => {
 
       {/* Condition Grade */}
       <div>
-        <label className="font-bold text-xs uppercase tracking-wider text-outline block mb-2">
+        <label className="font-bold text-xs uppercase tracking-wider text-on-surface-variant block mb-2">
           Condition Tier
         </label>
         <div className="space-y-1.5">
@@ -75,7 +76,7 @@ const ListingFilters = ({ filters, onFilterChange, onReset }) => {
               name="condition"
               checked={!filters.condition}
               onChange={() => handleChange('condition', '')}
-              className="text-primary focus:ring-primary"
+              className="text-secondary focus:ring-secondary"
             />
             <span>All Conditions</span>
           </label>
@@ -86,7 +87,7 @@ const ListingFilters = ({ filters, onFilterChange, onReset }) => {
                 name="condition"
                 checked={filters.condition === c.value}
                 onChange={() => handleChange('condition', c.value)}
-                className="text-primary focus:ring-primary"
+                className="text-secondary focus:ring-secondary"
               />
               <span>{c.label}</span>
             </label>
@@ -96,7 +97,7 @@ const ListingFilters = ({ filters, onFilterChange, onReset }) => {
 
       {/* Storage Capacity */}
       <div>
-        <label className="font-bold text-xs uppercase tracking-wider text-outline block mb-2">
+        <label className="font-bold text-xs uppercase tracking-wider text-on-surface-variant block mb-2">
           Internal Storage
         </label>
         <div className="grid grid-cols-3 gap-1.5">
@@ -105,10 +106,10 @@ const ListingFilters = ({ filters, onFilterChange, onReset }) => {
               key={s}
               type="button"
               onClick={() => handleChange('storage', filters.storage === s ? '' : s)}
-              className={`py-1.5 px-2 text-center rounded-lg font-medium transition-colors ${
+              className={`py-1.5 px-2 text-center rounded-lg font-medium transition-colors border ${
                 filters.storage === s
-                  ? 'bg-primary text-on-primary font-bold'
-                  : 'bg-surface-container-low text-on-surface hover:bg-surface-container'
+                  ? 'bg-accent text-white font-bold border-accent'
+                  : 'bg-surface-container-low text-on-surface hover:bg-surface-container border-surface-container'
               }`}
             >
               {s}
@@ -119,7 +120,7 @@ const ListingFilters = ({ filters, onFilterChange, onReset }) => {
 
       {/* Price Range */}
       <div>
-        <label className="font-bold text-xs uppercase tracking-wider text-outline block mb-2">
+        <label className="font-bold text-xs uppercase tracking-wider text-on-surface-variant block mb-2">
           Price Range ($ USD)
         </label>
         <div className="flex items-center gap-2">
@@ -128,7 +129,7 @@ const ListingFilters = ({ filters, onFilterChange, onReset }) => {
             placeholder="Min"
             value={filters.minPrice || ''}
             onChange={(e) => handleChange('minPrice', e.target.value)}
-            className="w-full bg-surface-container-low border border-surface-container rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-primary"
+            className="w-full bg-surface-container-low border border-surface-container rounded-lg px-2.5 py-1.5 text-xs text-on-surface focus:outline-none focus:border-secondary"
           />
           <span className="text-outline">-</span>
           <input
@@ -136,14 +137,14 @@ const ListingFilters = ({ filters, onFilterChange, onReset }) => {
             placeholder="Max"
             value={filters.maxPrice || ''}
             onChange={(e) => handleChange('maxPrice', e.target.value)}
-            className="w-full bg-surface-container-low border border-surface-container rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-primary"
+            className="w-full bg-surface-container-low border border-surface-container rounded-lg px-2.5 py-1.5 text-xs text-on-surface focus:outline-none focus:border-secondary"
           />
         </div>
       </div>
 
       {/* City Location */}
       <div>
-        <label className="font-bold text-xs uppercase tracking-wider text-outline block mb-2">
+        <label className="font-bold text-xs uppercase tracking-wider text-on-surface-variant block mb-2">
           City Location
         </label>
         <input
@@ -151,7 +152,7 @@ const ListingFilters = ({ filters, onFilterChange, onReset }) => {
           placeholder="e.g. Austin, New York, Seattle"
           value={filters.city || ''}
           onChange={(e) => handleChange('city', e.target.value)}
-          className="w-full bg-surface-container-low border border-surface-container rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:border-primary"
+          className="w-full bg-surface-container-low border border-surface-container rounded-lg px-3 py-1.5 text-xs text-on-surface focus:outline-none focus:border-secondary"
         />
       </div>
     </div>

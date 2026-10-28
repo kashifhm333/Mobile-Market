@@ -3,170 +3,182 @@
 @tailwind utilities;
 
 @layer base {
-  /* Default Light Theme Variables */
+  /* =========================================================================
+     Mandatory MobileMart Design Tokens
+     Authoritative Brand Palette (exact hexadecimal source of truth)
+     ========================================================================= */
+  :root[data-theme="light"],
   :root {
-    --color-primary: 0 74 198;
-    --color-primary-container: 37 99 235;
-    --color-primary-fixed: 219 225 255;
-    --color-primary-fixed-dim: 180 197 255;
+    /* Exact 5 brand tokens per prompt */
+    --text: #000000;
+    --background: #fbf9f9;
+    --primary: #777e7d;
+    --secondary: #3a6464;
+    --accent: #233432;
+
+    /* RGB channels for Tailwind alpha support */
+    --color-text: 0 0 0;
+    --color-background: 251 249 249;
+    --color-primary: 119 126 125;
+    --color-primary-container: 99 106 105;
     --color-on-primary: 255 255 255;
-    --color-on-primary-container: 238 239 255;
-    --color-on-primary-fixed: 0 23 75;
-    --color-on-primary-fixed-variant: 0 62 168;
-    --color-inverse-primary: 180 197 255;
-
-    --color-secondary: 0 108 73;
-    --color-secondary-container: 108 248 187;
-    --color-secondary-fixed: 111 251 190;
-    --color-secondary-fixed-dim: 78 222 163;
+    --color-secondary: 58 100 100;
+    --color-secondary-container: 220 236 236;
     --color-on-secondary: 255 255 255;
-    --color-on-secondary-container: 0 113 77;
-    --color-on-secondary-fixed: 0 33 19;
-    --color-on-secondary-fixed-variant: 0 82 54;
+    --color-on-secondary-container: 35 60 60;
+    --color-accent: 35 52 50;
+    --color-accent-container: 200 216 214;
+    --color-on-accent: 255 255 255;
 
-    --color-tertiary: 120 75 0;
-    --color-tertiary-container: 153 97 0;
-    --color-tertiary-fixed: 255 221 184;
-    --color-tertiary-fixed-dim: 255 185 95;
-    --color-on-tertiary: 255 255 255;
-    --color-on-tertiary-container: 255 238 221;
-    --color-on-tertiary-fixed: 42 23 0;
-    --color-on-tertiary-fixed-variant: 101 62 0;
-
-    --color-error: 186 26 26;
-    --color-error-container: 255 218 214;
-    --color-on-error: 255 255 255;
-    --color-on-error-container: 147 0 10;
-
-    --color-background: 250 248 255;
-    --color-on-background: 19 27 46;
-    --color-surface: 250 248 255;
-    --color-on-surface: 19 27 46;
-    --color-surface-dim: 210 217 244;
-    --color-surface-bright: 250 248 255;
+    /* Derived semantic tokens (restrained, clean surfaces) */
+    --surface: #ffffff;
+    --surface-container-lowest: #ffffff;
+    --surface-container-low: #f5f2f2;
+    --surface-container: #ece8e8;
+    --surface-container-high: #ded9d9;
+    --surface-container-highest: #cfcaca;
+    --surface-variant: #ece8e8;
+    --color-surface: 255 255 255;
+    --color-on-surface: 0 0 0;
+    --color-surface-dim: 242 239 239;
+    --color-surface-bright: 255 255 255;
     --color-surface-container-lowest: 255 255 255;
-    --color-surface-container-low: 242 243 255;
-    --color-surface-container: 234 237 255;
-    --color-surface-container-high: 226 231 255;
-    --color-surface-container-highest: 218 226 253;
-    --color-surface-variant: 218 226 253;
-    --color-on-surface-variant: 67 70 85;
-    --color-inverse-surface: 40 48 68;
-    --color-inverse-on-surface: 238 240 255;
-    --color-surface-tint: 0 83 219;
+    --color-surface-container-low: 245 242 242;
+    --color-surface-container: 236 232 232;
+    --color-surface-container-high: 222 217 217;
+    --color-surface-container-highest: 207 202 202;
+    --color-surface-variant: 236 232 232;
 
-    --color-outline: 115 118 134;
-    --color-outline-variant: 195 198 215;
+    /* Derived accessible text tokens (WCAG AA compliant) */
+    --text-muted: #596160; /* 5.8:1 contrast on #fbf9f9, passes AA */
+    --color-on-surface-variant: 89 97 96;
+    --color-outline: 138 145 144;
+    --color-outline-variant: 214 209 209;
+
+    /* Semantic status tokens (error, success, warning) */
+    --color-error: 185 28 28;
+    --color-error-container: 254 226 226;
+    --color-on-error: 255 255 255;
+    --color-on-error-container: 153 27 27;
+
+    --color-success: 21 128 61;
+    --color-success-container: 220 252 231;
+    --color-on-success: 255 255 255;
+    --color-on-success-container: 22 101 52;
+
+    --color-warning: 180 83 9;
+    --color-warning-container: 254 243 199;
+    --color-on-warning: 255 255 255;
+    --color-on-warning-container: 146 64 14;
   }
 
-  /* Specification 1: Deep Slate & Tech Cyan (Modern SaaS & Cloud Tools)
-     Base Background: Deep Slate #0F172A
-     Surface Base: Slate Dark #1E293B
-     Primary Accent: Electric Cyan #06B6D4
-     Secondary Accent: Indigo Purple #6366F1
-     Text Primary: Off-White Slate #F8FAFC
-     Text Muted: Cool Gray #94A3B8
-  */
+  :root[data-theme="dark"],
   .dark {
-    --color-primary: 6 182 212;             /* Electric Cyan #06B6D4 */
-    --color-primary-container: 8 145 178;   /* Cyan 600 #0891B2 */
-    --color-primary-fixed: 22 78 99;        /* Cyan 900 #164E63 */
-    --color-primary-fixed-dim: 14 116 144;  /* Cyan 700 #0E7490 */
-    --color-on-primary: 15 23 42;           /* Deep Slate #0F172A for ultra-high contrast on cyan CTAs */
-    --color-on-primary-container: 207 250 254; /* Cyan 100 #CFFAFE */
-    --color-on-primary-fixed: 207 250 254;
-    --color-on-primary-fixed-variant: 103 232 249;
-    --color-inverse-primary: 0 74 198;
+    /* Exact 5 brand tokens per prompt */
+    --text: #ffffff;
+    --background: #070404;
+    --primary: #818887;
+    --secondary: #9bc5c5;
+    --accent: #cbdcda;
 
-    --color-secondary: 99 102 241;          /* Indigo Purple #6366F1 */
-    --color-secondary-container: 67 56 202; /* Indigo 700 #4338CA */
-    --color-secondary-fixed: 49 46 129;     /* Indigo 900 #312E81 */
-    --color-secondary-fixed-dim: 55 48 163;
-    --color-on-secondary: 255 255 255;
-    --color-on-secondary-container: 224 231 255;
-    --color-on-secondary-fixed: 224 231 255;
-    --color-on-secondary-fixed-variant: 165 180 252;
+    /* RGB channels for Tailwind alpha support */
+    --color-text: 255 255 255;
+    --color-background: 7 4 4;
+    --color-primary: 129 136 135;
+    --color-primary-container: 100 106 105;
+    --color-on-primary: 7 4 4;
+    --color-secondary: 155 197 197;
+    --color-secondary-container: 28 48 48;
+    --color-on-secondary: 7 4 4;
+    --color-on-secondary-container: 203 230 230;
+    --color-accent: 203 220 218;
+    --color-accent-container: 35 52 50;
+    --color-on-accent: 7 4 4;
 
-    --color-tertiary: 245 158 11;           /* Amber 500 */
-    --color-tertiary-container: 180 83 9;
-    --color-tertiary-fixed: 69 26 3;
-    --color-tertiary-fixed-dim: 120 53 15;
-    --color-on-tertiary: 15 23 42;
-    --color-on-tertiary-container: 254 243 199;
-    --color-on-tertiary-fixed: 254 243 199;
-    --color-on-tertiary-fixed-variant: 252 211 77;
+    /* Derived semantic tokens (restrained dark surfaces) */
+    --surface: #120e0e;
+    --surface-container-lowest: #0d0a0a;
+    --surface-container-low: #171313;
+    --surface-container: #211c1c;
+    --surface-container-high: #2e2727;
+    --surface-container-highest: #3d3535;
+    --surface-variant: #211c1c;
+    --color-surface: 18 14 14;
+    --color-on-surface: 255 255 255;
+    --color-surface-dim: 10 7 7;
+    --color-surface-bright: 28 22 22;
+    --color-surface-container-lowest: 13 10 10;
+    --color-surface-container-low: 23 19 19;
+    --color-surface-container: 33 28 28;
+    --color-surface-container-high: 46 39 39;
+    --color-surface-container-highest: 61 53 53;
+    --color-surface-variant: 33 28 28;
 
-    --color-error: 248 113 113;             /* Red 400 */
-    --color-error-container: 127 29 29;     /* Red 900 */
-    --color-on-error: 15 23 42;
-    --color-on-error-container: 254 202 202;
+    /* Derived accessible text tokens (WCAG AA compliant) */
+    --text-muted: #a3a9a8; /* > 7:1 contrast on #070404, passes AA */
+    --color-on-surface-variant: 163 169 168;
+    --color-outline: 109 116 115;
+    --color-outline-variant: 46 39 39;
 
-    --color-background: 15 23 42;           /* Deep Slate #0F172A Base Background */
-    --color-on-background: 248 250 252;     /* Off-White Slate #F8FAFC Text Primary */
-    --color-surface: 15 23 42;              /* Deep Slate #0F172A */
-    --color-on-surface: 248 250 252;        /* Off-White Slate #F8FAFC */
-    --color-surface-dim: 11 17 32;          /* #0B1120 Deepest background */
-    --color-surface-bright: 30 41 59;       /* Slate Dark #1E293B */
-    --color-surface-container-lowest: 30 41 59; /* Slate Dark #1E293B Surface Base (cards, modals, dropdowns) */
-    --color-surface-container-low: 22 32 50;    /* #162032 Sub-cards & input backgrounds */
-    --color-surface-container: 51 65 85;        /* #334155 Slate 700 Borders and dividers */
-    --color-surface-container-high: 40 53 72;   /* #283548 */
-    --color-surface-container-highest: 71 85 105; /* #475569 Slate 600 */
-    --color-surface-variant: 37 51 70;         /* #253346 */
-    --color-on-surface-variant: 148 163 184;   /* Cool Gray #94A3B8 Text Muted */
-    --color-inverse-surface: 248 250 252;
-    --color-inverse-on-surface: 15 23 42;
-    --color-surface-tint: 6 182 212;           /* Electric Cyan #06B6D4 */
+    /* Semantic status tokens (error, success, warning) */
+    --color-error: 248 113 113;
+    --color-error-container: 61 22 22;
+    --color-on-error: 7 4 4;
+    --color-on-error-container: 252 165 165;
 
-    --color-outline: 100 116 139;           /* Slate 500 #64748B */
-    --color-outline-variant: 51 65 85;       /* Slate 700 #334155 */
+    --color-success: 74 222 128;
+    --color-success-container: 20 56 33;
+    --color-on-success: 7 4 4;
+    --color-on-success-container: 134 239 172;
+
+    --color-warning: 251 191 36;
+    --color-warning-container: 62 46 14;
+    --color-on-warning: 7 4 4;
+    --color-on-warning-container: 253 230 138;
   }
 
   html, body {
     margin: 0;
     padding: 0;
-    background-color: rgb(var(--color-background));
-    color: rgb(var(--color-on-surface));
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--background);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    transition: background-color 0.15s ease, color 0.15s ease;
   }
 }
 
-/* Material symbols outlined styling */
-.material-symbols-outlined {
-  font-family: 'Material Symbols Outlined';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-  vertical-align: middle;
+/* Accessible focus ring utility */
+:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
 }
 
-/* Custom smooth transitions */
-.transition-smooth {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+/* Reduced motion preference respect */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Dark mode scrollbars */
+[data-theme="dark"] ::-webkit-scrollbar,
 .dark ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
+[data-theme="dark"] ::-webkit-scrollbar-track,
 .dark ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #070404;
 }
+[data-theme="dark"] ::-webkit-scrollbar-thumb,
 .dark ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #2e2727;
   border-radius: 4px;
 }
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover,
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #3d3535;
 }

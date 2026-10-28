@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { PlusCircle, Inbox } from 'lucide-react';
 import api from '../services/api.js';
 import ConditionBadge from '../components/common/ConditionBadge.jsx';
 import { useToast } from '../context/ToastContext.jsx';
@@ -40,17 +41,17 @@ const MyListingsPage = () => {
   const getStatusBadge = (status) => {
     switch (status) {
       case 'ACTIVE':
-        return <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-secondary-container text-on-secondary-container">ACTIVE</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-secondary-container text-on-secondary-container border border-secondary/30">ACTIVE</span>;
       case 'RESERVED':
-        return <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-amber-200 dark:bg-amber-950/70 text-amber-900 dark:text-amber-200">RESERVED</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-surface-container-high text-on-surface border border-outline">RESERVED</span>;
       case 'SOLD':
-        return <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-surface-container-high text-on-surface">SOLD</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-surface-container-low text-on-surface border border-surface-container-high">SOLD</span>;
       case 'DRAFT':
-        return <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-surface-container text-outline">DRAFT</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-surface-container text-on-surface-variant border border-surface-container">DRAFT</span>;
       case 'ARCHIVED':
-        return <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-surface-container-low text-outline">ARCHIVED</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-surface-container-low text-outline border border-surface-container">ARCHIVED</span>;
       case 'REJECTED':
-        return <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-error-container text-on-error-container">REJECTED</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-error-container text-on-error-container border border-error/30">REJECTED</span>;
       default:
         return <span>{status}</span>;
     }
@@ -67,9 +68,9 @@ const MyListingsPage = () => {
         </div>
         <Link
           to="/create-listing"
-          className="px-4 py-2.5 rounded-xl bg-primary text-on-primary font-bold text-xs shadow-sm hover:bg-primary-container flex items-center gap-1.5"
+          className="px-4 py-2.5 rounded-xl bg-accent text-on-accent font-bold text-xs shadow-sm hover:opacity-90 flex items-center gap-1.5"
         >
-          <span className="material-symbols-outlined text-base">add_circle</span> Post New Phone
+          <PlusCircle className="w-4 h-4" /> Post New Phone
         </Link>
       </div>
 
@@ -88,7 +89,7 @@ const MyListingsPage = () => {
             onClick={() => setStatusFilter(tab.value)}
             className={`px-3 py-1.5 rounded-xl border transition-colors whitespace-nowrap ${
               statusFilter === tab.value
-                ? 'bg-primary text-on-primary border-primary'
+                ? 'bg-accent text-on-accent border-accent font-bold'
                 : 'bg-surface-container-low text-on-surface border-surface-container hover:bg-surface-container'
             }`}
           >
@@ -100,15 +101,15 @@ const MyListingsPage = () => {
       {loading ? (
         <div className="space-y-4">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="h-28 bg-surface-container-low rounded-2xl animate-pulse" />
+            <div key={i} className="h-28 bg-surface-container-low rounded-2xl animate-pulse border border-surface-container" />
           ))}
         </div>
       ) : listings.length === 0 ? (
-        <div className="bg-surface-container-lowest border border-surface-container rounded-3xl p-12 text-center space-y-3">
-          <span className="material-symbols-outlined text-5xl text-outline">inventory_2</span>
+        <div className="bg-surface border border-surface-container rounded-3xl p-12 text-center space-y-3">
+          <Inbox className="w-12 h-12 text-outline mx-auto" />
           <h3 className="font-bold text-base text-on-surface">No listings found</h3>
           <p className="text-xs text-on-surface-variant">You have not posted any phones in this status category yet.</p>
-          <Link to="/create-listing" className="inline-block mt-2 px-4 py-2 rounded-xl bg-primary text-on-primary text-xs font-bold">
+          <Link to="/create-listing" className="inline-block mt-2 px-4 py-2 rounded-xl bg-accent text-on-accent text-xs font-bold">
             Create Your First Listing
           </Link>
         </div>
@@ -117,7 +118,7 @@ const MyListingsPage = () => {
           {listings.map((l) => (
             <div
               key={l._id}
-              className="bg-surface-container-lowest border border-surface-container rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-surface border border-surface-container rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-sm hover:border-outline-variant transition-all"
             >
               <div className="flex items-center gap-4">
                 <img
@@ -134,7 +135,7 @@ const MyListingsPage = () => {
                     {getStatusBadge(l.status)}
                     <ConditionBadge condition={l.condition} />
                   </div>
-                  <Link to={`/listings/${l._id}`} className="font-bold text-sm text-on-surface hover:text-primary transition-colors block">
+                  <Link to={`/listings/${l._id}`} className="font-bold text-sm text-on-surface hover:text-secondary transition-colors block">
                     {l.title}
                   </Link>
                   <p className="text-xs text-on-surface-variant font-medium">
@@ -147,7 +148,7 @@ const MyListingsPage = () => {
               <div className="flex flex-wrap items-center gap-2 self-end md:self-center">
                 <Link
                   to={`/listings/${l._id}`}
-                  className="px-3 py-1.5 rounded-xl border border-surface-container bg-surface-container-low text-xs font-bold hover:bg-surface-container transition-colors"
+                  className="px-3 py-1.5 rounded-xl border border-surface-container bg-surface-container-low text-xs font-bold hover:bg-surface-container transition-colors text-on-surface"
                 >
                   View Ad
                 </Link>
@@ -156,7 +157,7 @@ const MyListingsPage = () => {
                   <button
                     type="button"
                     onClick={() => handleUpdateStatus(l._id, 'RESERVED')}
-                    className="px-3 py-1.5 rounded-xl bg-amber-100 dark:bg-amber-950/40 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-700/50 text-xs font-bold hover:bg-amber-200 dark:hover:bg-amber-900/60 transition-colors"
+                    className="px-3 py-1.5 rounded-xl bg-surface-container-high text-on-surface border border-outline text-xs font-bold hover:bg-surface-container transition-colors"
                   >
                     Mark Reserved
                   </button>
@@ -176,7 +177,7 @@ const MyListingsPage = () => {
                   <button
                     type="button"
                     onClick={() => handleUpdateStatus(l._id, 'ACTIVE')}
-                    className="px-3 py-1.5 rounded-xl bg-primary text-on-primary text-xs font-bold hover:bg-primary-container transition-colors"
+                    className="px-3 py-1.5 rounded-xl bg-accent text-on-accent text-xs font-bold hover:opacity-90 transition-colors"
                   >
                     Unreserve (Make Active)
                   </button>

@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {
+  Camera,
+  ArrowRight,
+  ArrowLeft,
+  X,
+  Rocket
+} from 'lucide-react';
 import api from '../services/api.js';
 import { useToast } from '../context/ToastContext.jsx';
 import SafetyBanner from '../components/common/SafetyBanner.jsx';
@@ -58,7 +65,6 @@ const CreateListingPage = () => {
   const handleInputChange = (field, value) => {
     setFormData((prev) => {
       const updated = { ...prev, [field]: value };
-      // Auto-generate title if user hasn't heavily customized it
       if (['brand', 'model', 'storage', 'carrier'].includes(field)) {
         const b = field === 'brand' ? value : prev.brand;
         const m = field === 'model' ? value : prev.model;
@@ -109,7 +115,6 @@ const CreateListingPage = () => {
 
     try {
       setSubmitting(true);
-      // 1. Create listing
       const payload = {
         title: formData.title || `${formData.brand} ${formData.model}`,
         brand: formData.brand,
@@ -133,7 +138,6 @@ const CreateListingPage = () => {
       const res = await api.post('/listings', payload);
       const newListing = res.data.data.listing;
 
-      // 2. Upload photos if selected
       if (selectedFiles.length > 0) {
         const uploadData = new FormData();
         selectedFiles.forEach((f) => uploadData.append('images', f));
@@ -155,7 +159,7 @@ const CreateListingPage = () => {
     <div className="max-w-4xl mx-auto px-4 py-8 space-y-8">
       {/* Step Indicator Header */}
       <div className="text-center space-y-2">
-        <span className="text-xs font-bold uppercase tracking-wider text-primary">Sell Your Device</span>
+        <span className="text-xs font-bold uppercase tracking-wider text-secondary">Sell Your Device</span>
         <h1 className="text-2xl sm:text-3xl font-black text-on-surface">Create a Phone Listing</h1>
         <p className="text-xs text-on-surface-variant max-w-md mx-auto">
           Accurate specifications and genuine device photos attract the fastest direct peer-to-peer offers.
@@ -168,7 +172,7 @@ const CreateListingPage = () => {
           type="button"
           onClick={() => setStep(1)}
           className={`flex items-center gap-1.5 pb-2 transition-colors ${
-            step === 1 ? 'text-primary border-b-2 border-primary font-black' : 'text-outline hover:text-on-surface'
+            step === 1 ? 'text-secondary border-b-2 border-secondary font-black' : 'text-outline hover:text-on-surface'
           }`}
         >
           <span>1. Brand & Model</span>
@@ -177,7 +181,7 @@ const CreateListingPage = () => {
           type="button"
           onClick={() => setStep(2)}
           className={`flex items-center gap-1.5 pb-2 transition-colors ${
-            step === 2 ? 'text-primary border-b-2 border-primary font-black' : 'text-outline hover:text-on-surface'
+            step === 2 ? 'text-secondary border-b-2 border-secondary font-black' : 'text-outline hover:text-on-surface'
           }`}
         >
           <span>2. Condition & Diagnostics</span>
@@ -186,7 +190,7 @@ const CreateListingPage = () => {
           type="button"
           onClick={() => setStep(3)}
           className={`flex items-center gap-1.5 pb-2 transition-colors ${
-            step === 3 ? 'text-primary border-b-2 border-primary font-black' : 'text-outline hover:text-on-surface'
+            step === 3 ? 'text-secondary border-b-2 border-secondary font-black' : 'text-outline hover:text-on-surface'
           }`}
         >
           <span>3. Pricing & Photos</span>
@@ -195,12 +199,12 @@ const CreateListingPage = () => {
 
       <SafetyBanner compact />
 
-      <form onSubmit={handleSubmit} className="bg-surface-container-lowest p-6 sm:p-8 rounded-3xl border border-surface-container shadow-sm space-y-8">
+      <form onSubmit={handleSubmit} className="bg-surface p-6 sm:p-8 rounded-3xl border border-surface-container shadow-sm space-y-8">
         {/* STEP 1: Brand & Model Selection */}
         {step === 1 && (
           <div className="space-y-6">
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-outline block mb-3">
+              <label className="text-xs font-bold uppercase tracking-wider text-on-surface-variant block mb-3">
                 Select Manufacturer Brand
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
@@ -211,7 +215,7 @@ const CreateListingPage = () => {
                     onClick={() => handleInputChange('brand', b)}
                     className={`py-3 px-4 rounded-xl border text-xs font-bold text-center transition-all ${
                       formData.brand === b
-                        ? 'border-primary bg-primary text-on-primary shadow-sm'
+                        ? 'border-accent bg-accent text-on-accent shadow-sm'
                         : 'border-surface-container bg-surface-container-low text-on-surface hover:bg-surface-container'
                     }`}
                   >
@@ -229,7 +233,7 @@ const CreateListingPage = () => {
                   placeholder="e.g. iPhone 16 Pro, Galaxy S24 Ultra, Pixel 9"
                   value={formData.model}
                   onChange={(e) => handleInputChange('model', e.target.value)}
-                  className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-primary"
+                  className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs text-on-surface focus:outline-none focus:border-secondary"
                   required
                 />
               </div>
@@ -240,13 +244,13 @@ const CreateListingPage = () => {
                   placeholder="e.g. Desert Titanium, Obsidian Black, Phantom Silver"
                   value={formData.color}
                   onChange={(e) => handleInputChange('color', e.target.value)}
-                  className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-primary"
+                  className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs text-on-surface focus:outline-none focus:border-secondary"
                 />
               </div>
             </div>
 
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-outline block mb-2">
+              <label className="text-xs font-bold uppercase tracking-wider text-on-surface-variant block mb-2">
                 Internal Storage Capacity
               </label>
               <div className="grid grid-cols-5 gap-2">
@@ -257,7 +261,7 @@ const CreateListingPage = () => {
                     onClick={() => handleInputChange('storage', s)}
                     className={`py-2 px-1 text-center rounded-xl border text-xs font-bold transition-all ${
                       formData.storage === s
-                        ? 'border-primary bg-primary-container text-on-primary'
+                        ? 'border-accent bg-accent text-on-accent'
                         : 'border-surface-container bg-surface-container-low text-on-surface hover:bg-surface-container'
                     }`}
                   >
@@ -273,7 +277,7 @@ const CreateListingPage = () => {
                 <select
                   value={formData.carrier}
                   onChange={(e) => handleInputChange('carrier', e.target.value)}
-                  className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs"
+                  className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs text-on-surface"
                 >
                   <option value="Unlocked">Factory Unlocked (Worldwide GSM/CDMA)</option>
                   <option value="Verizon">Verizon</option>
@@ -287,7 +291,7 @@ const CreateListingPage = () => {
                 <select
                   value={formData.ram}
                   onChange={(e) => handleInputChange('ram', e.target.value)}
-                  className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs"
+                  className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs text-on-surface"
                 >
                   <option value="6GB">6GB RAM</option>
                   <option value="8GB">8GB RAM</option>
@@ -301,9 +305,9 @@ const CreateListingPage = () => {
               <button
                 type="button"
                 onClick={() => setStep(2)}
-                className="px-6 py-2.5 rounded-xl bg-primary text-on-primary font-bold text-xs shadow hover:bg-primary-container flex items-center gap-1"
+                className="px-6 py-2.5 rounded-xl bg-accent text-on-accent font-bold text-xs shadow hover:opacity-90 flex items-center gap-1.5"
               >
-                Next: Condition Diagnostics <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                Next: Condition Diagnostics <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
@@ -313,7 +317,7 @@ const CreateListingPage = () => {
         {step === 2 && (
           <div className="space-y-6">
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-outline block mb-3">
+              <label className="text-xs font-bold uppercase tracking-wider text-on-surface-variant block mb-3">
                 Select Cosmetic & Functional Condition Tier
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -324,7 +328,7 @@ const CreateListingPage = () => {
                     onClick={() => handleInputChange('condition', c.id)}
                     className={`p-4 rounded-2xl border text-left transition-all ${
                       formData.condition === c.id
-                        ? 'border-primary bg-primary/5 ring-1 ring-primary'
+                        ? 'border-secondary bg-surface-container-high ring-1 ring-secondary'
                         : 'border-surface-container bg-surface-container-low hover:bg-surface-container'
                     }`}
                   >
@@ -344,16 +348,16 @@ const CreateListingPage = () => {
                   max="100"
                   value={formData.batteryHealth}
                   onChange={(e) => handleInputChange('batteryHealth', e.target.value)}
-                  className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-primary"
+                  className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs text-on-surface focus:outline-none focus:border-secondary"
                 />
-                <span className="text-[10px] text-outline mt-1 block">Check in device Settings &gt; Battery Health</span>
+                <span className="text-[10px] text-on-surface-variant mt-1 block">Check in device Settings &gt; Battery Health</span>
               </div>
               <div>
                 <label className="text-xs font-bold block mb-1">Screen Condition</label>
                 <select
                   value={formData.screenCondition}
                   onChange={(e) => handleInputChange('screenCondition', e.target.value)}
-                  className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs"
+                  className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs text-on-surface"
                 >
                   <option value="Flawless">Flawless (Zero scratches)</option>
                   <option value="Minor Scratches">Minor hairline scratches (invisible with screen on)</option>
@@ -366,16 +370,16 @@ const CreateListingPage = () => {
               <button
                 type="button"
                 onClick={() => setStep(1)}
-                className="px-5 py-2.5 rounded-xl border border-surface-container font-bold text-xs hover:bg-surface-container"
+                className="px-5 py-2.5 rounded-xl border border-surface-container font-bold text-xs hover:bg-surface-container flex items-center gap-1.5"
               >
-                Back
+                <ArrowLeft className="w-3.5 h-3.5" /> Back
               </button>
               <button
                 type="button"
                 onClick={() => setStep(3)}
-                className="px-6 py-2.5 rounded-xl bg-primary text-on-primary font-bold text-xs shadow hover:bg-primary-container flex items-center gap-1"
+                className="px-6 py-2.5 rounded-xl bg-accent text-white font-bold text-xs shadow hover:opacity-90 flex items-center gap-1.5"
               >
-                Next: Pricing & Photos <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                Next: Pricing & Photos <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
@@ -395,7 +399,7 @@ const CreateListingPage = () => {
                     placeholder="999"
                     value={formData.price}
                     onChange={(e) => handleInputChange('price', e.target.value)}
-                    className="w-full bg-surface-container-low border border-surface-container rounded-xl pl-7 pr-3 py-2 text-sm font-bold text-on-surface focus:outline-none focus:border-primary"
+                    className="w-full bg-surface-container-low border border-surface-container rounded-xl pl-7 pr-3 py-2 text-sm font-bold text-on-surface focus:outline-none focus:border-secondary"
                     required
                   />
                 </div>
@@ -404,10 +408,10 @@ const CreateListingPage = () => {
                 <label className="text-xs font-bold block mb-1">City / Meetup Location *</label>
                 <input
                   type="text"
-                  placeholder="e.g. Austin, TX (Downtown / Domain)"
+                  placeholder="e.g. Austin, TX (Downtown / Public Area)"
                   value={formData.city}
                   onChange={(e) => handleInputChange('city', e.target.value)}
-                  className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-primary"
+                  className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs text-on-surface focus:outline-none focus:border-secondary"
                   required
                 />
               </div>
@@ -419,7 +423,7 @@ const CreateListingPage = () => {
                 id="negotiable-check"
                 checked={formData.negotiable}
                 onChange={(e) => handleInputChange('negotiable', e.target.checked)}
-                className="rounded text-primary focus:ring-primary"
+                className="rounded text-secondary focus:ring-secondary"
               />
               <label htmlFor="negotiable-check" className="text-xs font-semibold cursor-pointer">
                 I am open to reasonable buyer price negotiation
@@ -432,7 +436,7 @@ const CreateListingPage = () => {
                 type="text"
                 value={formData.title}
                 onChange={(e) => handleInputChange('title', e.target.value)}
-                className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs font-bold text-on-surface focus:outline-none focus:border-primary"
+                className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs font-bold text-on-surface focus:outline-none focus:border-secondary"
                 required
               />
             </div>
@@ -444,13 +448,13 @@ const CreateListingPage = () => {
                 placeholder="Include details about cosmetic state, reason for selling, accessories included, and safe public meetup availability..."
                 value={formData.description}
                 onChange={(e) => handleInputChange('description', e.target.value)}
-                className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-primary"
+                className="w-full bg-surface-container-low border border-surface-container rounded-xl px-3 py-2 text-xs text-on-surface focus:outline-none focus:border-secondary"
               />
             </div>
 
             {/* Photo Upload Box */}
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-outline block mb-2">
+              <label className="text-xs font-bold uppercase tracking-wider text-on-surface-variant block mb-2">
                 Device Photos (Up to 8 high-res photos)
               </label>
               <div className="border-2 border-dashed border-surface-container-high rounded-2xl p-6 text-center hover:bg-surface-container-low/50 transition-colors">
@@ -463,9 +467,9 @@ const CreateListingPage = () => {
                   className="hidden"
                 />
                 <label htmlFor="photo-upload-input" className="cursor-pointer space-y-2 block">
-                  <span className="material-symbols-outlined text-4xl text-primary">add_a_photo</span>
+                  <Camera className="w-8 h-8 text-secondary mx-auto" />
                   <p className="text-xs font-bold text-on-surface">Click to select photos or drag & drop</p>
-                  <p className="text-[11px] text-outline">Supported formats: JPEG, PNG, WebP (Max 8MB each)</p>
+                  <p className="text-[11px] text-on-surface-variant">Supported formats: JPEG, PNG, WebP (Max 8MB each)</p>
                 </label>
               </div>
 
@@ -478,9 +482,10 @@ const CreateListingPage = () => {
                       <button
                         type="button"
                         onClick={() => removePhoto(i)}
-                        className="absolute top-1 right-1 w-5 h-5 bg-error text-on-error rounded-full text-xs flex items-center justify-center opacity-80 group-hover:opacity-100"
+                        className="absolute top-1 right-1 w-5 h-5 bg-error text-white rounded-full text-xs flex items-center justify-center opacity-80 group-hover:opacity-100"
+                        aria-label="Remove photo"
                       >
-                        ✕
+                        <X className="w-3 h-3" />
                       </button>
                     </div>
                   ))}
@@ -492,17 +497,17 @@ const CreateListingPage = () => {
               <button
                 type="button"
                 onClick={() => setStep(2)}
-                className="px-5 py-2.5 rounded-xl border border-surface-container font-bold text-xs hover:bg-surface-container"
+                className="px-5 py-2.5 rounded-xl border border-surface-container font-bold text-xs hover:bg-surface-container flex items-center gap-1.5"
               >
-                Back
+                <ArrowLeft className="w-3.5 h-3.5" /> Back
               </button>
               <button
                 type="submit"
                 disabled={submitting}
-                className="px-8 py-3 rounded-xl bg-primary text-on-primary font-bold text-xs shadow-md hover:bg-primary-container disabled:opacity-50 flex items-center gap-2"
+                className="px-8 py-3 rounded-xl bg-accent text-on-accent font-bold text-xs shadow-md hover:opacity-90 disabled:opacity-50 flex items-center gap-2"
               >
+                <Rocket className="w-3.5 h-3.5" />
                 {submitting ? 'Publishing Device Ad...' : 'Publish Listing Now'}
-                <span className="material-symbols-outlined text-sm">rocket_launch</span>
               </button>
             </div>
           </div>

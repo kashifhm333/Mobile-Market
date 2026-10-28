@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const NotFoundPage = () => {
   return (
     <div className="max-w-md mx-auto px-4 py-20 text-center space-y-4">
-      <div className="w-16 h-16 rounded-3xl bg-surface-container-high text-primary flex items-center justify-center mx-auto text-3xl font-black">
+      <div className="w-16 h-16 rounded-3xl bg-surface-container-high border border-surface-container text-secondary flex items-center justify-center mx-auto text-3xl font-black">
         404
       </div>
       <h1 className="text-2xl font-black text-on-surface">Page Not Found</h1>
@@ -14,7 +14,7 @@ const NotFoundPage = () => {
       <div>
         <Link
           to="/"
-          className="inline-block px-5 py-2.5 rounded-xl bg-primary text-on-primary font-bold text-xs shadow hover:bg-primary-container"
+          className="inline-block px-5 py-2.5 rounded-xl bg-accent text-white font-bold text-xs shadow-sm hover:opacity-90 transition-opacity"
         >
           Return to Marketplace Home
         </Link>

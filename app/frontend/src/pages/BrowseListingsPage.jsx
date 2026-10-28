@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { SearchX } from 'lucide-react';
 import api from '../services/api.js';
 import ListingCard from '../components/common/ListingCard.jsx';
 import ListingFilters from '../components/common/ListingFilters.jsx';
@@ -91,12 +92,12 @@ const BrowseListingsPage = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          <label htmlFor="sort-select" className="text-xs font-bold text-outline">Sort By:</label>
+          <label htmlFor="sort-select" className="text-xs font-bold text-on-surface-variant">Sort By:</label>
           <select
             id="sort-select"
             value={filters.sort}
             onChange={(e) => handleFilterChange({ ...filters, sort: e.target.value })}
-            className="bg-surface-container-low border border-surface-container rounded-xl px-3 py-1.5 text-xs text-on-surface font-semibold focus:outline-none focus:border-primary"
+            className="bg-surface-container-low border border-surface-container rounded-xl px-3 py-1.5 text-xs text-on-surface font-semibold focus:outline-none focus:border-secondary"
           >
             <option value="newest">Newest First</option>
             <option value="price_asc">Price: Low to High</option>
@@ -124,12 +125,12 @@ const BrowseListingsPage = () => {
           {loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="bg-surface-container-low rounded-2xl h-80 animate-pulse" />
+                <div key={i} className="bg-surface-container-low rounded-2xl h-80 animate-pulse border border-surface-container" />
               ))}
             </div>
           ) : listings.length === 0 ? (
-            <div className="bg-surface-container-lowest border border-surface-container rounded-2xl p-16 text-center space-y-3">
-              <span className="material-symbols-outlined text-5xl text-outline">search_off</span>
+            <div className="bg-surface border border-surface-container rounded-2xl p-16 text-center space-y-3">
+              <SearchX className="w-12 h-12 text-outline mx-auto" />
               <h3 className="font-bold text-base text-on-surface">No phones matched your filters</h3>
               <p className="text-xs text-on-surface-variant max-w-sm mx-auto">
                 Try loosening your price range or clearing selected brand/condition filters.
@@ -137,7 +138,7 @@ const BrowseListingsPage = () => {
               <button
                 type="button"
                 onClick={handleReset}
-                className="mt-2 px-4 py-2 rounded-xl bg-primary text-on-primary font-bold text-xs"
+                className="mt-2 px-4 py-2 rounded-xl bg-accent text-white font-bold text-xs hover:opacity-90 transition-opacity"
               >
                 Clear All Filters
               </button>
@@ -161,7 +162,7 @@ const BrowseListingsPage = () => {
               >
                 Previous
               </button>
-              <span className="text-xs font-semibold px-2">
+              <span className="text-xs font-semibold px-2 text-on-surface">
                 Page {filters.page} of {meta.totalPages}
               </span>
               <button

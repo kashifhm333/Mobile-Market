@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { CheckCircle2, ArrowRight, ShieldCheck } from 'lucide-react';
 
 const GradingStandardsPage = () => {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
       <div className="text-center space-y-3">
-        <span className="text-xs font-bold uppercase tracking-wider text-primary">Certified Quality Assurance</span>
+        <span className="text-xs font-bold uppercase tracking-wider text-secondary">Quality Assurance</span>
         <h1 className="text-3xl sm:text-4xl font-black text-on-surface tracking-tight">
           MobileMart Hardware Grading Standards
         </h1>
@@ -17,9 +18,9 @@ const GradingStandardsPage = () => {
       {/* 4 Tiers Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Tier 1: Pristine (Like New) */}
-        <div className="bg-surface-container-lowest border border-surface-container rounded-3xl p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-surface border border-surface-container rounded-3xl p-6 sm:p-8 space-y-4 shadow-sm hover:border-outline-variant transition-all">
           <div className="flex items-center justify-between">
-            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-secondary-container text-on-secondary-container">
+            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-secondary-container text-on-secondary-container border border-secondary/20">
               Grade A+
             </span>
             <span className="text-xs font-bold text-secondary">Flagship Equivalent</span>
@@ -30,27 +31,27 @@ const GradingStandardsPage = () => {
           </p>
           <ul className="text-xs space-y-2 text-on-surface pt-2">
             <li className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary text-base">check_circle</span>
+              <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
               <span>Battery capacity: <strong>≥ 95% maximum health</strong></span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary text-base">check_circle</span>
+              <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
               <span>OLED / LCD: Zero dead pixels, burn-in, or touch latency</span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary text-base">check_circle</span>
+              <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
               <span>Cameras: Precision autofocus, spotless sensor glass</span>
             </li>
           </ul>
         </div>
 
         {/* Tier 2: Excellent */}
-        <div className="bg-surface-container-lowest border border-surface-container rounded-3xl p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-surface border border-surface-container rounded-3xl p-6 sm:p-8 space-y-4 shadow-sm hover:border-outline-variant transition-all">
           <div className="flex items-center justify-between">
-            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-primary-container text-on-primary">
+            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-surface-container-high text-on-surface border border-outline-variant">
               Grade A
             </span>
-            <span className="text-xs font-bold text-primary">Best Balance Tier</span>
+            <span className="text-xs font-bold text-secondary">Best Balance Tier</span>
           </div>
           <h2 className="text-xl font-bold text-on-surface">Excellent (Minor Wear)</h2>
           <p className="text-xs text-on-surface-variant leading-relaxed">
@@ -58,27 +59,27 @@ const GradingStandardsPage = () => {
           </p>
           <ul className="text-xs space-y-2 text-on-surface pt-2">
             <li className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary text-base">check_circle</span>
+              <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
               <span>Battery capacity: <strong>≥ 88% maximum health</strong></span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary text-base">check_circle</span>
+              <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
               <span>100% fully functioning biometrics (FaceID / Fingerprint)</span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary text-base">check_circle</span>
+              <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
               <span>Speakers, microphones, and charging port thoroughly cleared</span>
             </li>
           </ul>
         </div>
 
         {/* Tier 3: Good */}
-        <div className="bg-surface-container-lowest border border-surface-container rounded-3xl p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-surface border border-surface-container rounded-3xl p-6 sm:p-8 space-y-4 shadow-sm hover:border-outline-variant transition-all">
           <div className="flex items-center justify-between">
-            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-surface-container-high text-on-surface">
+            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-surface-container text-on-surface border border-surface-container-high">
               Grade B
             </span>
-            <span className="text-xs font-bold text-outline">Smart Budget Tier</span>
+            <span className="text-xs font-bold text-on-surface-variant">Smart Budget Tier</span>
           </div>
           <h2 className="text-xl font-bold text-on-surface">Good (Light Scratches)</h2>
           <p className="text-xs text-on-surface-variant leading-relaxed">
@@ -86,27 +87,27 @@ const GradingStandardsPage = () => {
           </p>
           <ul className="text-xs space-y-2 text-on-surface pt-2">
             <li className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary text-base">check_circle</span>
+              <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
               <span>Battery capacity: <strong>≥ 82% maximum health</strong></span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary text-base">check_circle</span>
+              <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
               <span>Zero cracks or deep gouges</span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary text-base">check_circle</span>
+              <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
               <span>Full carrier unlocked network compatibility</span>
             </li>
           </ul>
         </div>
 
         {/* Tier 4: Fair */}
-        <div className="bg-surface-container-lowest border border-surface-container rounded-3xl p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-surface border border-surface-container rounded-3xl p-6 sm:p-8 space-y-4 shadow-sm hover:border-outline-variant transition-all">
           <div className="flex items-center justify-between">
-            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-tertiary-fixed text-on-tertiary-fixed">
+            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-surface-container-low text-on-surface-variant border border-outline-variant">
               Grade C
             </span>
-            <span className="text-xs font-bold text-tertiary">Maximum Discount</span>
+            <span className="text-xs font-bold text-on-surface-variant">Maximum Discount</span>
           </div>
           <h2 className="text-xl font-bold text-on-surface">Fair (Value Tier)</h2>
           <p className="text-xs text-on-surface-variant leading-relaxed">
@@ -114,15 +115,15 @@ const GradingStandardsPage = () => {
           </p>
           <ul className="text-xs space-y-2 text-on-surface pt-2">
             <li className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary text-base">check_circle</span>
+              <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
               <span>Battery capacity: <strong>≥ 75% maximum health</strong></span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary text-base">check_circle</span>
+              <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
               <span>Screen fully responsive to multi-touch gestures</span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary text-base">check_circle</span>
+              <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
               <span>Deepest market price reductions (40-60% off MSRP)</span>
             </li>
           </ul>
@@ -132,9 +133,9 @@ const GradingStandardsPage = () => {
       <div className="text-center pt-4">
         <Link
           to="/browse"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-on-primary font-bold text-sm shadow hover:bg-primary-container transition-all"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent text-white font-bold text-xs shadow hover:opacity-90 transition-all"
         >
-          Browse Certified Phones <span className="material-symbols-outlined text-base">arrow_forward</span>
+          <ShieldCheck className="w-4 h-4" /> Browse Certified Phones <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
     </div>

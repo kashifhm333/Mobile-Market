@@ -42,6 +42,7 @@ describe('Theme Switcher & ThemeContext', () => {
 
     expect(themeSpan.textContent).toBe('light');
     expect(isDarkSpan.textContent).toBe('false');
+    expect(document.documentElement.getAttribute('data-theme')).toBe('light');
     expect(document.documentElement.classList.contains('dark')).toBe(false);
 
     // Toggle to Dark
@@ -49,6 +50,7 @@ describe('Theme Switcher & ThemeContext', () => {
 
     expect(themeSpan.textContent).toBe('dark');
     expect(isDarkSpan.textContent).toBe('true');
+    expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
     expect(document.documentElement.classList.contains('dark')).toBe(true);
     expect(localStorage.getItem(THEME_STORAGE_KEY)).toBe('dark');
 
@@ -57,6 +59,7 @@ describe('Theme Switcher & ThemeContext', () => {
 
     expect(themeSpan.textContent).toBe('light');
     expect(isDarkSpan.textContent).toBe('false');
+    expect(document.documentElement.getAttribute('data-theme')).toBe('light');
     expect(document.documentElement.classList.contains('dark')).toBe(false);
     expect(localStorage.getItem(THEME_STORAGE_KEY)).toBe('light');
   });
@@ -77,14 +80,15 @@ describe('Theme Switcher & ThemeContext', () => {
     );
 
     const toggleBtn = screen.getByRole('button', {
-      name: /Switch to dark theme \(Deep Slate & Tech Cyan\)/i
+      name: /Switch to dark theme/i
     });
     expect(toggleBtn).toBeInTheDocument();
-    expect(document.documentElement.classList.contains('dark')).toBe(false);
+    expect(document.documentElement.getAttribute('data-theme')).toBe('light');
 
     // Click toggle button
     fireEvent.click(toggleBtn);
 
+    expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
     expect(document.documentElement.classList.contains('dark')).toBe(true);
     expect(localStorage.getItem(THEME_STORAGE_KEY)).toBe('dark');
 
@@ -96,7 +100,22 @@ describe('Theme Switcher & ThemeContext', () => {
 
     // Click back to light
     fireEvent.click(switchBackBtn);
+    expect(document.documentElement.getAttribute('data-theme')).toBe('light');
     expect(document.documentElement.classList.contains('dark')).toBe(false);
     expect(localStorage.getItem(THEME_STORAGE_KEY)).toBe('light');
+  });
+
+  it('restores theme from localStorage on initial render', () => {
+    localStorage.setItem(THEME_STORAGE_KEY, 'dark');
+
+    render(
+      <ThemeProvider>
+        <ThemeConsumer />
+      </ThemeProvider>
+    );
+
+    expect(screen.getByTestId('current-theme').textContent).toBe('dark');
+    expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
   });
 });

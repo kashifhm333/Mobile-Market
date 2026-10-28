@@ -1,0 +1,9 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /conversations
+Disallow: /my-listings
+Disallow: /favorites
+
+Sitemap: http://localhost:5173/sitemap.xml

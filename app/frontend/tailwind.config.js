@@ -1,54 +1,27 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  darkMode: 'class',
+  darkMode: ['class', '[data-theme="dark"]'],
   theme: {
     extend: {
       colors: {
-        /* User specification direct role aliases: Deep Slate & Tech Cyan */
-        'deep-slate': '#0F172A',
-        'slate-dark': '#1E293B',
-        'electric-cyan': '#06B6D4',
-        'indigo-purple': '#6366F1',
-        'off-white-slate': '#F8FAFC',
-        'cool-gray': '#94A3B8',
-
-        /* Dynamic Semantic Theme Tokens (Light & Dark with alpha support) */
+        /* Exact Brand Palette mappings */
+        text: 'var(--text)',
+        background: 'var(--background)',
         primary: 'rgb(var(--color-primary) / <alpha-value>)',
         'primary-container': 'rgb(var(--color-primary-container) / <alpha-value>)',
-        'primary-fixed': 'rgb(var(--color-primary-fixed) / <alpha-value>)',
-        'primary-fixed-dim': 'rgb(var(--color-primary-fixed-dim) / <alpha-value>)',
         'on-primary': 'rgb(var(--color-on-primary) / <alpha-value>)',
-        'on-primary-container': 'rgb(var(--color-on-primary-container) / <alpha-value>)',
-        'on-primary-fixed': 'rgb(var(--color-on-primary-fixed) / <alpha-value>)',
-        'on-primary-fixed-variant': 'rgb(var(--color-on-primary-fixed-variant) / <alpha-value>)',
-        'inverse-primary': 'rgb(var(--color-inverse-primary) / <alpha-value>)',
 
         secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
         'secondary-container': 'rgb(var(--color-secondary-container) / <alpha-value>)',
-        'secondary-fixed': 'rgb(var(--color-secondary-fixed) / <alpha-value>)',
-        'secondary-fixed-dim': 'rgb(var(--color-secondary-fixed-dim) / <alpha-value>)',
         'on-secondary': 'rgb(var(--color-on-secondary) / <alpha-value>)',
         'on-secondary-container': 'rgb(var(--color-on-secondary-container) / <alpha-value>)',
-        'on-secondary-fixed': 'rgb(var(--color-on-secondary-fixed) / <alpha-value>)',
-        'on-secondary-fixed-variant': 'rgb(var(--color-on-secondary-fixed-variant) / <alpha-value>)',
 
-        tertiary: 'rgb(var(--color-tertiary) / <alpha-value>)',
-        'tertiary-container': 'rgb(var(--color-tertiary-container) / <alpha-value>)',
-        'tertiary-fixed': 'rgb(var(--color-tertiary-fixed) / <alpha-value>)',
-        'tertiary-fixed-dim': 'rgb(var(--color-tertiary-fixed-dim) / <alpha-value>)',
-        'on-tertiary': 'rgb(var(--color-on-tertiary) / <alpha-value>)',
-        'on-tertiary-container': 'rgb(var(--color-on-tertiary-container) / <alpha-value>)',
-        'on-tertiary-fixed': 'rgb(var(--color-on-tertiary-fixed) / <alpha-value>)',
-        'on-tertiary-fixed-variant': 'rgb(var(--color-on-tertiary-fixed-variant) / <alpha-value>)',
+        accent: 'rgb(var(--color-accent) / <alpha-value>)',
+        'accent-container': 'rgb(var(--color-accent-container) / <alpha-value>)',
+        'on-accent': 'rgb(var(--color-on-accent) / <alpha-value>)',
 
-        error: 'rgb(var(--color-error) / <alpha-value>)',
-        'error-container': 'rgb(var(--color-error-container) / <alpha-value>)',
-        'on-error': 'rgb(var(--color-on-error) / <alpha-value>)',
-        'on-error-container': 'rgb(var(--color-on-error-container) / <alpha-value>)',
-
-        background: 'rgb(var(--color-background) / <alpha-value>)',
-        'on-background': 'rgb(var(--color-on-background) / <alpha-value>)',
+        /* Surface Semantic Tokens */
         surface: 'rgb(var(--color-surface) / <alpha-value>)',
         'on-surface': 'rgb(var(--color-on-surface) / <alpha-value>)',
         'surface-dim': 'rgb(var(--color-surface-dim) / <alpha-value>)',
@@ -60,38 +33,41 @@ export default {
         'surface-container-highest': 'rgb(var(--color-surface-container-highest) / <alpha-value>)',
         'surface-variant': 'rgb(var(--color-surface-variant) / <alpha-value>)',
         'on-surface-variant': 'rgb(var(--color-on-surface-variant) / <alpha-value>)',
-        'inverse-surface': 'rgb(var(--color-inverse-surface) / <alpha-value>)',
-        'inverse-on-surface': 'rgb(var(--color-inverse-on-surface) / <alpha-value>)',
-        'surface-tint': 'rgb(var(--color-surface-tint) / <alpha-value>)',
 
         outline: 'rgb(var(--color-outline) / <alpha-value>)',
-        'outline-variant': 'rgb(var(--color-outline-variant) / <alpha-value>)'
+        'outline-variant': 'rgb(var(--color-outline-variant) / <alpha-value>)',
+
+        /* Semantic Functional Colors */
+        error: 'rgb(var(--color-error) / <alpha-value>)',
+        'error-container': 'rgb(var(--color-error-container) / <alpha-value>)',
+        'on-error': 'rgb(var(--color-on-error) / <alpha-value>)',
+        'on-error-container': 'rgb(var(--color-on-error-container) / <alpha-value>)',
+
+        success: 'rgb(var(--color-success) / <alpha-value>)',
+        'success-container': 'rgb(var(--color-success-container) / <alpha-value>)',
+        'on-success': 'rgb(var(--color-on-success) / <alpha-value>)',
+        'on-success-container': 'rgb(var(--color-on-success-container) / <alpha-value>)',
+
+        warning: 'rgb(var(--color-warning) / <alpha-value>)',
+        'warning-container': 'rgb(var(--color-warning-container) / <alpha-value>)',
+        'on-warning': 'rgb(var(--color-on-warning) / <alpha-value>)',
+        'on-warning-container': 'rgb(var(--color-on-warning-container) / <alpha-value>)',
+
+        /* Legacy backward compatibility aliases if needed by existing templates */
+        'tertiary-fixed': 'rgb(var(--color-surface-container-high) / <alpha-value>)',
+        'on-tertiary-fixed': 'rgb(var(--color-on-surface) / <alpha-value>)'
       },
       borderRadius: {
         DEFAULT: '0.25rem',
         lg: '0.5rem',
         xl: '0.75rem',
         '2xl': '1rem',
-        '3xl': '1.5rem',
+        '3xl': '1.25rem',
         full: '9999px'
       },
-      spacing: {
-        'space-xs': '0.25rem',
-        'space-sm': '0.5rem',
-        'space-md': '1rem',
-        'space-lg': '1.5rem',
-        'space-xl': '2.5rem',
-        gutter: '1rem',
-        'gutter-md': '1.5rem',
-        'gutter-lg': '2rem',
-        margin: '1rem',
-        'margin-md': '2rem',
-        'margin-lg': '3rem'
-      },
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'sans-serif'],
-        display: ['Plus Jakarta Sans', 'sans-serif'],
-        label: ['Inter', 'sans-serif']
+        sans: ['Inter', 'Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        display: ['Plus Jakarta Sans', 'Inter', 'sans-serif']
       }
     }
   },
